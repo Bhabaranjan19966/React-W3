@@ -1,0 +1,15 @@
+.Background{
+    width: 100%;
+    background: palevioletred;
+    display: flex;
+    height: 80px;  
+    align-items: center;
+    justify-content: center;
+}
+#filed{
+ width:50%;
+ margin: 10px;
+ background: white;
+ box-shadow: 2px;  
+ border-radius: 7px; 
+}
