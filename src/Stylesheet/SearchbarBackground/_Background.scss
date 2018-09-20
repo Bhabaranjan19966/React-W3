@@ -46,6 +46,8 @@
    padding-left: 8%;
    div{
        display: inline-block;
+      
+       
    }
    
 }
@@ -55,7 +57,18 @@
     margin: 1em;
     
 }
-
+.the_top_movies{
+   display: block;
+   height: 450px;
+   overflow: scroll;
+   align-content: center;
+   padding-left: 7%;
+    div{
+        display: inline-block;
+        
+        height: 450px;
+    }
+}
 @media screen and (max-width:618px) {
     .GridView{
         width: wrap;

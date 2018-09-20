@@ -43,13 +43,13 @@ class Item extends Component {
                                                     <CardMedia
                                                         component="img"
                                                         width="130"
-                                                        height="220"
                                                         image={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+                                                        height="220"
                                                         title="Contemplative Reptile"
                                                     />
                                                     <CardContent>
                                                         <Typography gutterBottom variant="headline" component="h2">
-                                                            {data.name}<br/>Rating:{data.popularity}
+                                                            {data.name}<br/>Rating:  {data.popularity}
                                                         </Typography>
                                                         <Typography component="p">
                                                             {data.overview}
@@ -80,7 +80,7 @@ class Item extends Component {
                                                     />
                                                     <CardContent>
                                                         <Typography gutterBottom variant="headline" component="h2">
-                                                            {data.title}<br/>Rating:{data.popularity}
+                                                            {data.title}<br/>Rating:  {data.popularity}
                                                         </Typography>
                                                         <Typography component="p">
                                                             {data.overview}
