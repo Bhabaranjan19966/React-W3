@@ -27,6 +27,9 @@ const styles = theme => ({
 
 function CenteredGrid(props) {
 
+  // state = {
+  //   values:[],
+  // }
  
   
     if(window.queryString){
