@@ -27,9 +27,9 @@ class Item extends Component {
                             for (var i = 0; i < jsonData.results.length; i++) {
                                 k = jsonData.results.map((data) => {
                                     if (data.name) {
-                                        return <div>{data.name}</div>;
+                                        return <div className="component">{data.name}</div>;
                                     } else {
-                                        return <li>{data.title}</li>;
+                                        return <div className="component">{data.title}</div>;
                                     }
                                 });
                             }

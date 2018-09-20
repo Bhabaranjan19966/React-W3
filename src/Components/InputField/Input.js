@@ -26,10 +26,10 @@ class Ip extends Component {
                 }
             );
         } 
-        
+        this.props.reRender();
     }
     wipeValue = () => {
-        document.getElementById('dropdown').style.display='none';
+       // document.getElementById('dropdown').style.display='none';
     }
 
     // fetchData = () => {
@@ -49,7 +49,7 @@ class Ip extends Component {
                 <Button variant="contained" color="primary"  onClick={this.nameChangeHandler} >
                     Primary
               </Button>
-              <Grid value={window.queryString}/>
+              
               {/* {this.fetchData()} */}
             </div>
 

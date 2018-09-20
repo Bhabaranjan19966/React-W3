@@ -1,7 +1,9 @@
 #dropdown{
-    width: 100%;
+    width: 100vw;
+    margin-top: 50px;
     height: 50px;
     background:blanchedalmond;
     display: none;
     z-index: 1;
+    flex-direction: row;
 }

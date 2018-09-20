@@ -15,6 +15,9 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  container:{
+    width:100,
+  }
 });
 
 
@@ -33,7 +36,7 @@ function CenteredGrid(props) {
  
   
     if(window.queryString){
-      document.getElementById('dropdown').style.display = 'block';
+     // document.getElementById('dropdown').style.display = 'block';
     }
 
     console.log('grid called');
@@ -44,11 +47,14 @@ function CenteredGrid(props) {
     <div className={classes.root}>
       <Grid container spacing={16}>
         
-            <div id="dropdown">
-            <Fetch value={props.value}/>
-            </div>
+           
             
       </Grid>
+      <div>
+      <div >
+            <Fetch value={props.value}/>
+            </div>
+        </div>
     </div>
   );
 }
