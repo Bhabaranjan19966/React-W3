@@ -1,6 +1,14 @@
 import React from 'react';
 import { Component } from 'react';
 import ContentDeleteSweep from 'material-ui/SvgIcon';
+import '../../Stylesheet/main.scss';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+
 var k, previous, after;
 class Item extends Component {
     state = {
@@ -26,10 +34,68 @@ class Item extends Component {
                             console.log(jsonData);
                             for (var i = 0; i < jsonData.results.length; i++) {
                                 k = jsonData.results.map((data) => {
+                                    console.log(data.poster_path);
                                     if (data.name) {
-                                        return <div className="component">{data.name}</div>;
+                                        return (
+
+                                            <Card  className="Card">
+                                                <CardActionArea>
+                                                    <CardMedia
+                                                        component="img"
+                                                        width="130"
+                                                        height="220"
+                                                        image={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+                                                        title="Contemplative Reptile"
+                                                    />
+                                                    <CardContent>
+                                                        <Typography gutterBottom variant="headline" component="h2">
+                                                            {data.name}<br/>Rating:{data.popularity}
+                                                        </Typography>
+                                                        <Typography component="p">
+                                                            {data.overview}
+                                                        </Typography>
+                                                    </CardContent>
+                                                </CardActionArea>
+                                            </Card>
+
+
+
+
+
+                                        );
+
+
                                     } else {
-                                        return <div className="component">{data.title}</div>;
+
+                                        return (
+
+                                            <Card className="Card">
+                                                <CardActionArea>
+                                                    <CardMedia
+                                                        component="img"
+                                                        width="130"
+                                                        height="220"
+                                                        image={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+                                                        title="Contemplative Reptile"
+                                                    />
+                                                    <CardContent>
+                                                        <Typography gutterBottom variant="headline" component="h2">
+                                                            {data.title}<br/>Rating:{data.popularity}
+                                                        </Typography>
+                                                        <Typography component="p">
+                                                            {data.overview}
+                                                        </Typography>
+                                                    </CardContent>
+                                                </CardActionArea>
+                                            </Card>
+
+
+
+
+                                        );
+
+
+
                                     }
                                 });
                             }

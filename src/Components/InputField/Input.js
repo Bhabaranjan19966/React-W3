@@ -25,11 +25,12 @@ class Ip extends Component {
                     value:1,
                 }
             );
-        } 
+        }
+        document.getElementById('results').style.display='block'; 
         this.props.reRender();
     }
     wipeValue = () => {
-       // document.getElementById('dropdown').style.display='none';
+        document.getElementById('results').style.display='none';
     }
 
     // fetchData = () => {

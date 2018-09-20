@@ -15,10 +15,11 @@ class Search extends Component{
     render(){
         return(
             <div>
+                
             <div className="Background"  >
                 <Ip reRender={this.reRender}/>
             </div>
-            <div className="GridView">
+            <div className="GridView" id='results'>
                 <Grid value={window.queryString}/>
             </div>
             </div>      

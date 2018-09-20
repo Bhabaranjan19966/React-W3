@@ -15,47 +15,40 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  container:{
-    width:100,
+  container: {
+    width: 100,
   }
 });
 
 
-  // fetchData = () => {
-  //   if(window.queryString){
-  //       console.log('passed data' + window.queryString);
-  //       return <Fetch value={window.queryString}/>;
-  //   }
-  // }
+// fetchData = () => {
+//   if(window.queryString){
+//       console.log('passed data' + window.queryString);
+//       return <Fetch value={window.queryString}/>;
+//   }
+// }
 
 function CenteredGrid(props) {
 
   // state = {
   //   values:[],
   // }
- 
-  
-    if(window.queryString){
-     // document.getElementById('dropdown').style.display = 'block';
-    }
 
-    console.log('grid called');
+
+  if (window.queryString) {
+    // document.getElementById('dropdown').style.display = 'block';
+  }
+
+  console.log('grid called');
   const { classes } = props;
 
   return (
-    
-    <div className={classes.root}>
-      <Grid container spacing={16}>
-        
-           
-            
-      </Grid>
-      <div>
-      <div >
-            <Fetch value={props.value}/>
-            </div>
-        </div>
+    <div>
+      <div className="flex-container">
+        <Fetch value={props.value} />
+      </div>
     </div>
+
   );
 }
 
