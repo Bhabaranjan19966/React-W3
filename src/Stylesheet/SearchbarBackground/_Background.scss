@@ -1,95 +1,119 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.Background {
+  width: 100%;
+  background: palevioletred;
+  display: flex;
+  height: 80px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+}
+#filed {
+  width: 50%;
+  margin: 10px;
+  background: white;
+  box-shadow: 2px;
+  border-radius: 7px;
+}
 
-*{
-    padding: 0;
-    margin: 0;
+.GridView {
+  width: wrap;
+  height: 100%;
+  background: rgb(205, 233, 151);
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 0;
 }
-.Background{
-    width: 100%;
-    background: palevioletred;
-    display: flex;
-    height: 80px;  
-    margin-bottom: 20px;
-    align-items: center;
-    justify-content: center; 
+.image-container {
+  height: 270px;
+  width: 200px;
+  display: inline-block;
+  background: tomato;
+  padding: 10px;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  margin-bottom: 17px;
 }
-#filed{
- width:50%;
- margin: 10px;
- background: white;
- box-shadow: 2px;  
- border-radius: 7px; 
+.flex-container {
+  padding-left: 8%;
+  div {
+    display: inline-block;
+  }
+  .Card {
+    p {
+      height: 100px;
+      overflow: hidden;
+    }
+    h2 {
+      height: 100px;
+      overflow: hidden;
+    }
+  }
+}
+.Card {
+  max-width: 290px;
+  height: 500px;
+  margin: 1em;
+}
+button {
+  margin-bottom: 100px;
+}
+.the_top_movies {
+  display: flex;
+  height: wrap;
+  overflow-x: auto;
+  align-content: center;
+  padding-left: 7%;
+  flex-wrap: nowrap;
+  .Card {
+    display: block;
+    min-width: 290px;
+    height: 500px;
+    margin: 1em;
+    p {
+      height: 100px;
+      overflow: hidden;
+    }
+    h2 {
+      height: 100px;
+      overflow: hidden;
+    }
+  }
+}
+.MuiCard-root-157 {
+  overflow: auto;
 }
 
-.GridView{
+.ininfo_modal{
+    z-index: 2;
+    width: 70vw;
+    background : seashell;
+}
+
+
+@media screen and (max-width: 618px) {
+  .GridView {
     width: wrap;
     height: 100%;
     background: rgb(205, 233, 151);
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-content: center;
-    margin: 0;
-}
-.image-container {
-    height: 270px;
-    width: 200px;
-    display: inline-block;
-    background: tomato;
-    padding: 10px;
-    flex-direction: column;
-    text-align: center;
-    justify-content: space-around;
-    margin-bottom: 17px;
-    
-}
-.flex-container{
-   
-   padding-left: 8%;
-   div{
-       display: inline-block;
-      
-       
-   }
-   
-}
-.Card{
-    max-width: 290px;
-    height: 500px;
-    margin: 1em;
-    
-}
-.the_top_movies{
-   display: block;
-   height: 450px;
-   overflow: scroll;
-   align-content: center;
-   padding-left: 7%;
-    div{
-        display: inline-block;
-        
-        height: 450px;
-    }
-}
-@media screen and (max-width:618px) {
-    .GridView{
-        width: wrap;
-        height: 100%;
-        background: rgb(205, 233, 151);
-        display: flex;
-        justify-content:space-between;
-        align-content: center;
-        
-        
-    }
+  }
 }
 
-@media screen and (max-width:600) {
-    .GridView{
-        width: wrap;
-        height: 100%;
-        background: rgb(205, 233, 151);
-        display: flex;
-        justify-content:space-between;
-        align-content: center;
-        
-    }
+@media screen and (max-width: 600) {
+  .GridView {
+    width: wrap;
+    height: 100%;
+    background: rgb(205, 233, 151);
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
 }

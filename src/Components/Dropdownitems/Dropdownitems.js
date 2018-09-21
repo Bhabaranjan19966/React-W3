@@ -8,7 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
+import Modal from '../Modal/modal.js';
 var k, previous, after;
 class Item extends Component {
     state = {
@@ -17,6 +18,14 @@ class Item extends Component {
     list;
     name = window.queryString;
     dataValue;
+    print = (value) => {
+
+        console.log(value);
+        this.dataValue = <Modal name={value[0]} popularity={value[1]} overview={value[2]}/>
+        this.setState({
+
+        });
+    }
     fetchData = () => {
         console.log(this.props.value + "prp    -----------will mount");
         previous = this.props.value;
@@ -36,9 +45,10 @@ class Item extends Component {
                                 k = jsonData.results.map((data) => {
                                     console.log(data.poster_path);
                                     if (data.name) {
-                                        return (
+                                        //console.log(that);
 
-                                            <Card  className="Card">
+                                        return (
+                                            <Card className="Card">
                                                 <CardActionArea>
                                                     <CardMedia
                                                         component="img"
@@ -49,26 +59,25 @@ class Item extends Component {
                                                     />
                                                     <CardContent>
                                                         <Typography gutterBottom variant="headline" component="h2">
-                                                            {data.name}<br/>Rating:  {data.popularity}
+                                                            {data.name}<br />Rating:  {data.popularity}
                                                         </Typography>
                                                         <Typography component="p">
                                                             {data.overview}
                                                         </Typography>
                                                     </CardContent>
                                                 </CardActionArea>
+                                                <CardActions>
+                                                    <Button size="small" color="primary">
+                                                        Share
+                                                        </Button>
+                                                    <Button size="small" color="primary" onClick={() => that.print([data.name,data.popularity,data.overview])}>
+                                                        Learn More
+                                                        </Button>
+                                                </CardActions>
                                             </Card>
-
-
-
-
-
                                         );
-
-
                                     } else {
-
                                         return (
-
                                             <Card className="Card">
                                                 <CardActionArea>
                                                     <CardMedia
@@ -80,22 +89,23 @@ class Item extends Component {
                                                     />
                                                     <CardContent>
                                                         <Typography gutterBottom variant="headline" component="h2">
-                                                            {data.title}<br/>Rating:  {data.popularity}
+                                                            {data.title}<br />Rating:  {data.popularity}
                                                         </Typography>
                                                         <Typography component="p">
                                                             {data.overview}
                                                         </Typography>
                                                     </CardContent>
                                                 </CardActionArea>
+                                                <CardActions>
+                                                    <Button size="small" color="primary" onClick={() => that.print([data.title,data.popularity,data.overview])}>
+                                                        Share
+                                                        </Button>
+                                                    <Button size="small" color="primary" >
+                                                        Learn More
+                                                        </Button>
+                                                </CardActions>
                                             </Card>
-
-
-
-
                                         );
-
-
-
                                     }
                                 });
                             }
@@ -108,6 +118,7 @@ class Item extends Component {
         }
     }
     render() {
+        console.log('rendering drop down');
         if (previous != this.props.value) this.fetchData();
         if (!k) {
             return <section></section>;
@@ -118,6 +129,7 @@ class Item extends Component {
         const values = k.map((data) => data)
         return (
             <div>
+                {this.dataValue}
                 {values}
             </div>
         );

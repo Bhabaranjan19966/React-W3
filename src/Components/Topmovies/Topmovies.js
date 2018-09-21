@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -25,7 +26,7 @@ class Topmovies extends Component {
                 function (jsonData) {
                     thetopList = jsonData.results.map(
                         data => {
-                          
+
                             return (
                                 <Card className="Card">
                                     <CardActionArea>
@@ -40,11 +41,19 @@ class Topmovies extends Component {
                                             <Typography gutterBottom variant="headline" component="h2">
                                                 {data.title}<br /> Rating:{data.popularity}
                                             </Typography>
-                                            <Typography component="p">
+                                            <Typography component="p" >
                                                 {data.overview}
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
+                                    <CardActions>
+                                        <Button size="small" color="primary">
+                                            Share
+                                        </Button>
+                                        <Button size="small" color="primary">
+                                            Learn More
+                                        </Button>
+                                    </CardActions>
                                 </Card>
                             );
                         }
@@ -55,22 +64,22 @@ class Topmovies extends Component {
                     });
                 }
             );
-            
+
     }
 
 
 
     render() {
-        
-        if(!thetopList)this.fetchData();
-        
-        if(thetopList)  {
-        const topArray = thetopList.map(data => data);
-        
-        return(
-            topArray.map(data => data )
-        );
-        }else{
+
+        if (!thetopList) this.fetchData();
+
+        if (thetopList) {
+            const topArray = thetopList.map(data => data);
+
+            return (
+                topArray.map(data => data)
+            );
+        } else {
             return <h1>               Fetching data .... </h1>;
         }
     }
