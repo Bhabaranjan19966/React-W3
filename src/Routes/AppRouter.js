@@ -7,7 +7,7 @@ import Modal from '../Components/Modal/modal.js';
 import AddToCatagory from '../Components/AddtoCatagory/AddToCatagory.js';
 import CreateMovieCategory from '../Components/CreateMovieCategory/CreateMovieCategory.js';
 import successFullRedirect from '../Components/SuccessFullRedirect/SuccessFullRedirect.js';
-
+import MovieCategories from '../Components/MovieCategories/MovieCategories.js';
 function routingPages  (props)  {
     window.catagoryList ={};
         return (
@@ -18,6 +18,7 @@ function routingPages  (props)  {
                     <Route path="/AddtoCatagory" exact component={AddToCatagory}> </Route>
                     <Route path="/AddtoCatagory/NewCategory" exact component={CreateMovieCategory}> </Route>
                     <Route path="/AddtoCatagory/NewCategory/successFullOperation" exact component={successFullRedirect}> </Route>
+                    <Route path="/AddtoCatagory/Categories" exact component={MovieCategories}></Route>
                 </Switch>
             </BrowserRouter>
         );

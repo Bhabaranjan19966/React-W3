@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -14,8 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import '../../Stylesheet/main.scss'
-import classNames from 'classnames';
+
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -23,7 +21,7 @@ function Transition(props) {
 
 class FullScreenDialog extends React.Component {
   state = {
-    open: true,
+    open: true
   };
 
   handleClickOpen = () => {
@@ -34,59 +32,44 @@ class FullScreenDialog extends React.Component {
     this.setState({ open: false });
   };
 
-  changepage = () => {
-    document.getElementById('newcat').click();
-  }
-
-  getCategoriyList = () => {
-    document.getElementById('catlist').click();
-  }
   render() {
-    //const { classes } = this.props;
-    const { moviename } = this.props.location.state;
-    console.log(moviename);
+      var list=[];
+      localStorage.removeItem("loglevel:webpack-dev-server");
+    for( var i = 0 ; i < localStorage.length; i++){
+        list.push(<ul><ListItem button>
+            <ListItemText primary={localStorage.key(i)}  />
+          </ListItem>
+          <Divider />
+          </ul>
+          );
+    }
     return (
       <div>
-        <Link to="/AddtoCatagory/Categories" id="catlist">  </Link>
         <Dialog
           fullScreen
           open={this.state.open}
           onClose={this.handleClose}
           TransitionComponent={Transition}
         >
-          <AppBar id="myappbar">
+          <AppBar id="List_app_bar">
             <Toolbar>
-              <IconButton color="white" onClick={this.handleClose} aria-label="Close">
-                <Link to="/"> <CloseIcon /></Link>
+              <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
+                <CloseIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" >
+              <Typography variant="title" color="inherit" id="typo">
                 Sound
               </Typography>
             </Toolbar>
           </AppBar>
-          <List>
-            <ListItem button>
-              <ListItemText primary="Add to an existing catagory" onClick={this.getCategoriyList}/>
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Create new catagory" onClick={this.changepage} />
-              <Link id="newcat"
-                to={{
-                  pathname: "/AddtoCatagory/NewCategory",
-                  state: {
-                    moviename: moviename,
-                  }
-                }}
-              >  </Link>
-            </ListItem>
-
-
+          <List id="listView">
+            {list}
           </List>
         </Dialog>
       </div>
     );
   }
 }
+
+
 
 export default (FullScreenDialog);

@@ -13,6 +13,7 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
+
 class AlertDialogSlide extends React.Component {
   state = {
     open: true,
@@ -46,10 +47,12 @@ class AlertDialogSlide extends React.Component {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-             You Will Be Redirected Shotly <InProgress/>
+            
+                Movie Added Successfully!!
              
             </DialogContentText>
           </DialogContent>
+          <InProgress left={30}/>
           <DialogActions>
             <Button onClick={this.handleClose()} color="primary">             
             </Button>

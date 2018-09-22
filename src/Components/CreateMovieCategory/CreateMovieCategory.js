@@ -23,15 +23,24 @@ export default class FormDialog extends React.Component {
     document.getElementById('redirect_back').click();   
     this.setState({ open: false });
   };
-  handleCreateCategory = () =>{
-      var TextFieldValue =document.getElementById('name').value;
-    if( TextFieldValue !=''){
-        window.catagoryList.has
+  handleCreateCategory = (moviename) =>{
+      
+      var getText =document.getElementById('name').value;
+      //console.log(!getText);
+      //console.log(getText.lenght+" my text filed value");     
+    if( !getText || (window.localStorage.getItem(getText))){
+        console.log('no entry');
+        // console.log(TextFieldValue +" my text filed value");     
+        // console.log( TextFieldValue +"-----  "+TextFieldValue.lenght==0+ " -- -" + window.localStorage.getItem(TextFieldValue));
+    }else{
+      //localStorage.setItem(TextFieldValue,moviename);
+      document.getElementById('createCategory').click();
     } 
     
   }
 
   render() {
+    const {moviename} = this.props.location.state;
     return (
       <div>        
         <Dialog
@@ -56,9 +65,9 @@ export default class FormDialog extends React.Component {
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
                 Cancel
-                <Link to="/AddtoCatagory" id="redirect_back">  </Link> 
+                <Link to="/" id="redirect_back">  </Link> 
             </Button>
-            <Button onClick={this.handleCreateCategory} color="primary">
+            <Button onClick={()=>this.handleCreateCategory(moviename)} color="primary">
               Create Category
               <Link to="/AddtoCatagory/NewCategory/successFullOperation" id="createCategory">  </Link>
             </Button>

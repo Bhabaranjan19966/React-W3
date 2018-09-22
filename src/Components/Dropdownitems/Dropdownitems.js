@@ -83,7 +83,17 @@ class Item extends Component {
                                                     </Link>
                                                         </Button>
                                                     <Button size="small" color="primary" onClick={() => that.print([data.name,data.popularity,data.overview])}>
-                                                        <Link to="/AddtoCatagory"> Learn more </Link>
+                                                        <Link 
+                                                            to={{
+                                                                pathname:"/AddtoCatagory",
+                                                                state:{
+                                                                    moviename:data.name,
+                                                                    popularity:data.popularity,
+                                                                    overview:data.overview,
+                                                                }
+                                                            }}
+                                                        > Learn more 
+                                                        </Link>
                                                         </Button>
                                                 </CardActions>
                                             </Card>
@@ -122,7 +132,16 @@ class Item extends Component {
                                                     </Link>
                                                         </Button>
                                                     <Button size="small" color="primary" >
-                                                    <Link to="/AddtoCatagory"> Learn more </Link>
+                                                    <Link 
+                                                        to={{
+                                                            pathname:"/AddtoCatagory",
+                                                            state:{
+                                                                moviename:data.name,
+                                                                popularity:data.popularity,
+                                                                overview:data.overview,
+                                                            }
+                                                        }}
+                                                    > Learn more </Link>
                                                         </Button>
                                                 </CardActions>
                                             </Card>
