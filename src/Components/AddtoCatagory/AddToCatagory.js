@@ -33,11 +33,14 @@ class FullScreenDialog extends React.Component {
     this.setState({ open: false });
   };
 
+  changepage = () => {
+    document.getElementById('newcat').click();
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Open full-screen dialog</Button>
         <Dialog
           fullScreen
           open={this.state.open}
@@ -52,9 +55,6 @@ class FullScreenDialog extends React.Component {
               <Typography variant="title" color="inherit" className={classes.flex}>
                 Sound
               </Typography>
-              <Button color="inherit" onClick={this.handleClose}>
-                save
-              </Button>
             </Toolbar>
           </AppBar>
           <List>
@@ -63,7 +63,8 @@ class FullScreenDialog extends React.Component {
             </ListItem>
             <Divider />
             <ListItem button>
-              <ListItemText primary="Create new catagory"  />
+              <ListItemText primary="Create new catagory" onClick={this.changepage}  />
+              <Link to="/AddtoCatagory/NewCategory" id="newcat" >  </Link>
             </ListItem>
           </List>
         </Dialog>
