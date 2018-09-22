@@ -10,6 +10,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from '../Modal/modal.js';
+import {Link} from 'react-router-dom';
+import DeviceDataUsage from 'material-ui/SvgIcon';
+
 var k, previous, after;
 class Item extends Component {
     state = {
@@ -33,7 +36,7 @@ class Item extends Component {
             var line = 1;
             var that = this;
             while (line < 3) {
-                fetch(`https://api.themoviedb.org/3/search/multi?api_key=3693fada7703a9016579565320426cde&language=en-US&query=${this.props.value}&page=${line}&include_adult=false`)
+                fetch(`https://api.themoviedb.org/3/search/movie?api_key=3693fada7703a9016579565320426cde&language=en-US&query=${this.props.value}&page=1llo&include_adult=false`)
                     .then(
                         function (response) {
                             return response.json();
@@ -43,7 +46,7 @@ class Item extends Component {
                             console.log(jsonData);
                             for (var i = 0; i < jsonData.results.length; i++) {
                                 k = jsonData.results.map((data) => {
-                                    console.log(data.poster_path);
+                                    //console.log(data.poster_path);
                                     if (data.name) {
                                         //console.log(that);
 
@@ -68,7 +71,16 @@ class Item extends Component {
                                                 </CardActionArea>
                                                 <CardActions>
                                                     <Button size="small" color="primary">
-                                                        Share
+                                                       <Link to={{
+                                                        pathname:"/MovieInfo",
+                                                        state:{
+                                                            moviename:data.name,
+                                                            popularity:data.popularity,
+                                                            overview:data.overview,
+                                                        }
+                                                    }}> 
+                                                    Share
+                                                    </Link>
                                                         </Button>
                                                     <Button size="small" color="primary" onClick={() => that.print([data.name,data.popularity,data.overview])}>
                                                         Learn More
@@ -98,7 +110,16 @@ class Item extends Component {
                                                 </CardActionArea>
                                                 <CardActions>
                                                     <Button size="small" color="primary" onClick={() => that.print([data.title,data.popularity,data.overview])}>
-                                                        Share
+                                                    <Link to={{
+                                                        pathname:"/MovieInfo",
+                                                        state:{
+                                                            moviename:data.title,
+                                                            popularity:data.popularity,
+                                                            overview:data.overview,
+                                                        }
+                                                    }}> 
+                                                    Share
+                                                    </Link>
                                                         </Button>
                                                     <Button size="small" color="primary" >
                                                         Learn More
@@ -111,11 +132,14 @@ class Item extends Component {
                             }
                             that.setState({
                             });
-                            console.log(k[0])
+                           
                         });
                 line++;
             }
         }
+    }
+    componentDidMount(){
+        console.log('mounted drop down');
     }
     render() {
         console.log('rendering drop down');
