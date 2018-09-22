@@ -80,7 +80,7 @@ class Topmovies extends Component {
                 topArray.map(data => data)
             );
         } else {
-            return <h1>               Fetching data .... </h1>;
+            return <h1>  Fetching data .... </h1>;
         }
     }
 }

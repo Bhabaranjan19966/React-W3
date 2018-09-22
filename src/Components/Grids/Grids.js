@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Cards from '../Cards/Cards.js';
+//import Cards from '../Cards/Cards.js';
 import '../../Stylesheet/main.scss';
 import Fetch from '../Dropdownitems/Dropdownitems.js'
 const styles = theme => ({

@@ -6,8 +6,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Grids from './Grids/Grids.js';
-import Cards from './Cards/Cards.js';
+//import Grids from './Grids/Grids.js';
+//import Cards from './Cards/Cards.js';
 import '../Stylesheet/main.scss';
 import Search from './SearchbarBackground/SearchBackground'
 const styles = {
