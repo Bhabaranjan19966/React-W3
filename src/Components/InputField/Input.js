@@ -10,27 +10,27 @@ import CommunicationCallMissedOutgoing from 'material-ui/SvgIcon';
 var v;
 class Ip extends Component {
 
-    state ={
-        value:0,
+    state = {
+        value: 0,
     }
-    follow ;
+    follow;
     nameChangeHandler = () => {
         v = document.getElementById('filed').value;
-        window.queryString =v;
+        window.queryString = v;
         console.log(window.queryString + 'changed value');
-        if(v){
+        if (v) {
             window.modalDisplay = true;
             this.setState(
                 {
-                    value:1,
+                    value: 1,
                 }
             );
         }
-        document.getElementById('results').style.display='block'; 
+        document.getElementById('results').style.display = 'block';
         this.props.reRender();
     }
     wipeValue = () => {
-        document.getElementById('results').style.display='none';
+        document.getElementById('results').style.display = 'none';
     }
 
     // fetchData = () => {
@@ -47,11 +47,11 @@ class Ip extends Component {
                 <TextField id="filed" onClick={this.wipeValue}>
 
                 </TextField>
-                <Button variant="contained" color="primary"  onClick={this.nameChangeHandler} >
+                <Button variant="contained" color="primary" onClick={this.nameChangeHandler} >
                     Primary
               </Button>
-              
-              {/* {this.fetchData()} */}
+
+                {/* {this.fetchData()} */}
             </div>
 
         );

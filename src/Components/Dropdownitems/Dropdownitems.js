@@ -10,7 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from '../Modal/modal.js';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DeviceDataUsage from 'material-ui/SvgIcon';
 
 var k, previous, after;
@@ -24,7 +24,7 @@ class Item extends Component {
     print = (value) => {
 
         console.log(value);
-        this.dataValue = <Modal name={value[0]} popularity={value[1]} overview={value[2]}/>
+        this.dataValue = <Modal name={value[0]} popularity={value[1]} overview={value[2]} />
         this.setState({
 
         });
@@ -71,30 +71,30 @@ class Item extends Component {
                                                 </CardActionArea>
                                                 <CardActions>
                                                     <Button size="small" color="primary">
-                                                       <Link to={{
-                                                        pathname:"/MovieInfo",
-                                                        state:{
-                                                            moviename:data.name,
-                                                            popularity:data.popularity,
-                                                            overview:data.overview,
-                                                        }
-                                                    }}> 
-                                                    Share
+                                                        <Link to={{
+                                                            pathname: "/MovieInfo",
+                                                            state: {
+                                                                moviename: data.name,
+                                                                popularity: data.popularity,
+                                                                overview: data.overview,
+                                                            }
+                                                        }}>
+                                                            Share
                                                     </Link>
-                                                        </Button>
-                                                    <Button size="small" color="primary" onClick={() => that.print([data.name,data.popularity,data.overview])}>
-                                                        <Link 
+                                                    </Button>
+                                                    <Button size="small" color="primary" onClick={() => that.print([data.name, data.popularity, data.overview])}>
+                                                        <Link
                                                             to={{
-                                                                pathname:"/AddtoCatagory",
-                                                                state:{
-                                                                    moviename:data.name,
-                                                                    popularity:data.popularity,
-                                                                    overview:data.overview,
+                                                                pathname: "/AddtoCatagory",
+                                                                state: {
+                                                                    moviename: data.name,
+                                                                    popularity: data.popularity,
+                                                                    overview: data.overview,
                                                                 }
                                                             }}
-                                                        > Learn more 
+                                                        > Learn more
                                                         </Link>
-                                                        </Button>
+                                                    </Button>
                                                 </CardActions>
                                             </Card>
                                         );
@@ -119,30 +119,30 @@ class Item extends Component {
                                                     </CardContent>
                                                 </CardActionArea>
                                                 <CardActions>
-                                                    <Button size="small" color="primary" onClick={() => that.print([data.title,data.popularity,data.overview])}>
-                                                    <Link to={{
-                                                        pathname:"/MovieInfo",
-                                                        state:{
-                                                            moviename:data.title,
-                                                            popularity:data.popularity,
-                                                            overview:data.overview,
-                                                        }
-                                                    }}> 
-                                                    Share
-                                                    </Link>
-                                                        </Button>
-                                                    <Button size="small" color="primary" >
-                                                    <Link 
-                                                        to={{
-                                                            pathname:"/AddtoCatagory",
-                                                            state:{
-                                                                moviename:data.name,
-                                                                popularity:data.popularity,
-                                                                overview:data.overview,
+                                                    <Button size="small" color="primary" onClick={() => that.print([data.title, data.popularity, data.overview])}>
+                                                        <Link to={{
+                                                            pathname: "/MovieInfo",
+                                                            state: {
+                                                                moviename: data.title,
+                                                                popularity: data.popularity,
+                                                                overview: data.overview,
                                                             }
-                                                        }}
-                                                    > Learn more </Link>
-                                                        </Button>
+                                                        }}>
+                                                            Share
+                                                    </Link>
+                                                    </Button>
+                                                    <Button size="small" color="primary" >
+                                                        <Link
+                                                            to={{
+                                                                pathname: "/AddtoCatagory",
+                                                                state: {
+                                                                    moviename: data.name,
+                                                                    popularity: data.popularity,
+                                                                    overview: data.overview,
+                                                                }
+                                                            }}
+                                                        > Learn more </Link>
+                                                    </Button>
                                                 </CardActions>
                                             </Card>
                                         );
@@ -151,13 +151,13 @@ class Item extends Component {
                             }
                             that.setState({
                             });
-                           
+
                         });
                 line++;
             }
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         console.log('mounted drop down');
     }
     render() {

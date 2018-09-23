@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+//import PropTypes from 'prop-types';
+//import { withStyles } from '@material-ui/core/styles';
+//import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-
+import {Link} from 'react-router-dom';
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -32,16 +32,34 @@ class FullScreenDialog extends React.Component {
     this.setState({ open: false });
   };
 
+  handlerAddMovieToCategory = (moviename,LinkId) =>{
+    console.log(moviename +"--------------"+LinkId);
+    document.getElementById(LinkId).click();
+    
+  }
+
   render() {
-      var list=[];
-      localStorage.removeItem("loglevel:webpack-dev-server");
-    for( var i = 0 ; i < localStorage.length; i++){
-        list.push(<ul><ListItem button>
-            <ListItemText primary={localStorage.key(i)}  />
-          </ListItem>
+    var list = [];
+    const { moviename } = this.props.location.state;
+    localStorage.removeItem("loglevel:webpack-dev-server");
+    for (var i = 0; i < localStorage.length; i++) {
+      let k = i;
+      list.push(
+        <ul><ListItem button>
+          <ListItemText primary={localStorage.key(i)}  onClick={()=> this.handlerAddMovieToCategory(moviename,k)}/>
+        </ListItem>
           <Divider />
-          </ul>
-          );
+          <Link  id={k}
+           to={{
+            pathname: "/AddtoCatagory/ExistingCategory",
+            state: {
+              moviename: moviename,
+              Id:k,
+            }
+          }}
+          ></Link>
+        </ul>
+      );
     }
     return (
       <div>
