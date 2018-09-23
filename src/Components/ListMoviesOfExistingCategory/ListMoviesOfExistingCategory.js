@@ -13,40 +13,82 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { Link } from 'react-router-dom';
 
+
 function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
-
 class FullScreenDialog extends React.Component {
     state = {
         open: true,
+        deleteMode: false,
+        add:true,
     };
-
     handleClickOpen = () => {
         this.setState({ open: true });
     };
-
     handleClose = () => {
         document.getElementById('Home_page_redirect').click();
     };
+    handleDeleteMode = () => {
+        if (this.state.deleteMode) {
+            document.getElementById('deltebutton').innerHTML = "Turn ON Delete mode";
+            this.setState({
+                deleteMode: false,
+                add:false,
+            })
+        } else {
+            document.getElementById('deltebutton').innerHTML = "Turn OFF Delete mode";
+            this.setState({
+                deleteMode: true,
+                add:false,
+            })
+        }
+    }
+
+    handleDeleteMovie = (moviename, id) => {
+        console.log(id + "----------" + moviename);
+
+        if (this.state.deleteMode) {
+            var movieList = localStorage.getItem(localStorage.key(id));
+            var newList = [];
+            movieList = movieList.split(',,,');
+
+            var index = movieList.indexOf(moviename);
+            console.log(movieList, index);
+            //movieList.splice(index, 1);
+            for (let i = 0; i < movieList.length; i++) {
+                if (i != index) {
+                    if (movieList[i].length) newList.push(movieList[i]);
+                }
+            }
+            newList = newList.join(',,,');
+            console.log(typeof newList);
+            window.localStorage.setItem(localStorage.key(id), newList);
+            console.log(localStorage);
+            this.setState({
+                open:true,
+            });
+        }
+    }
 
     render() {
         const { moviename } = this.props.location.state;
         const { Id } = this.props.location.state;
         var movieList;
         movieList = localStorage.getItem(localStorage.key(Id));
-        if (movieList.indexOf(moviename) < 0) {
+        console.log(localStorage);
+        if (movieList.indexOf(moviename) < 0 && this.state.add) {
             movieList += ",,,";
             movieList += moviename;
         }
         localStorage.setItem(localStorage.key(Id), movieList);
         movieList = movieList.split(",,,");
-
+        console.log(movieList)
         const ListMovies = movieList.map((movieName, index) => {
             return (
                 <ul>
                     <ListItem button>
-                        <ListItemText primary={movieName} key={index} />
+                        <ListItemText primary={movieName} key={index} onClick={() => this.handleDeleteMovie(movieName, Id)} />
                     </ListItem>
                     <Divider />
                 </ul>
@@ -68,8 +110,11 @@ class FullScreenDialog extends React.Component {
                             </IconButton>
                             <Typography variant="title" color="inherit" id="typohy">
                                 Sound
-              </Typography>
+                            </Typography>
                         </Toolbar>
+                        <Button color="inherit" onClick={this.handleDeleteMode} id="deltebutton">
+                            Turn on Delete mode
+                         </Button>
                     </AppBar>
                     <List>
                         {ListMovies}
@@ -79,5 +124,4 @@ class FullScreenDialog extends React.Component {
         );
     }
 }
-
 export default (FullScreenDialog);
