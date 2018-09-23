@@ -18,8 +18,17 @@
   box-shadow: 2px;
   border-radius: 7px;
 }
+#deletion{
+  float: right;
+  margin: 10px;
+  
+}
+#rename{
+  float: right;
+  margin: 10px;
+}
 #List_app_bar{
-  background: orange;
+  background: black;
 }
 #listView{
   margin-top: 50px;
@@ -108,12 +117,12 @@ button {
     background : seashell;
 }
 #myappbar{
-  background: orange !important;
+  background: black !important;
   position: relative !important;
 
 }
 .MuiToolbar-root-53,.MuiToolbar-regular-55, .MuiToolbar-gutters-54 {
-  background: orange !important;
+  background: black !important;
   position: relative !important;
 }
 .MuiTypography-root-82, .MuiTypography-title-88, .MuiTypography-colorInherit-102{

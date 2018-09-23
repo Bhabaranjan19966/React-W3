@@ -21,7 +21,7 @@ class FullScreenDialog extends React.Component {
     state = {
         open: true,
         deleteMode: false,
-        add:true,
+        add: true,
     };
     handleClickOpen = () => {
         this.setState({ open: true });
@@ -34,13 +34,13 @@ class FullScreenDialog extends React.Component {
             document.getElementById('deltebutton').innerHTML = "Turn ON Delete mode";
             this.setState({
                 deleteMode: false,
-                add:false,
+                add: false,
             })
         } else {
             document.getElementById('deltebutton').innerHTML = "Turn OFF Delete mode";
             this.setState({
                 deleteMode: true,
-                add:false,
+                add: false,
             })
         }
     }
@@ -66,7 +66,7 @@ class FullScreenDialog extends React.Component {
             window.localStorage.setItem(localStorage.key(id), newList);
             console.log(localStorage);
             this.setState({
-                open:true,
+                open: true,
             });
         }
     }
@@ -85,14 +85,17 @@ class FullScreenDialog extends React.Component {
         movieList = movieList.split(",,,");
         console.log(movieList)
         const ListMovies = movieList.map((movieName, index) => {
-            return (
-                <ul>
-                    <ListItem button>
-                        <ListItemText primary={movieName} key={index} onClick={() => this.handleDeleteMovie(movieName, Id)} />
-                    </ListItem>
-                    <Divider />
-                </ul>
-            );
+            
+            if(movieName != undefined){
+                return (
+                    <ul>
+                        <ListItem button>
+                            <ListItemText primary={movieName} key={index} onClick={() => this.handleDeleteMovie(movieName, Id)} />
+                        </ListItem>
+                        <Divider />
+                    </ul>
+                );
+            }
         });
         return (
             <div>

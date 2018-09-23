@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 //import PropTypes from 'prop-types';
 //import { withStyles } from '@material-ui/core/styles';
-//import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
@@ -68,6 +68,7 @@ class FullScreenDialog extends React.Component {
               <Typography variant="title" color="inherit" >
                 Sound
               </Typography>
+              
             </Toolbar>
           </AppBar>
           <List>

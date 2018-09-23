@@ -33,7 +33,7 @@ export default class FormDialog extends React.Component {
       // console.log(TextFieldValue +" my text filed value");     
       // console.log( TextFieldValue +"-----  "+TextFieldValue.lenght==0+ " -- -" + window.localStorage.getItem(TextFieldValue));
     } else {
-      console.log(moviename+"---------added");
+      console.log(moviename+"---------added"+getText);
       localStorage.setItem(getText, moviename);
       document.getElementById('createCategory').click();
     }
@@ -42,6 +42,7 @@ export default class FormDialog extends React.Component {
 
   render() {
     const { moviename } = this.props.location.state;
+    console.log(moviename);
     return (
       <div>
         <Dialog
@@ -52,7 +53,7 @@ export default class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Add Category</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Please add a new Category to Your Preference List.
+              Please Add/Rename a new Category to Your Preference List.
             </DialogContentText>
             <TextField
               autoFocus
