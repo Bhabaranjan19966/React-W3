@@ -11,6 +11,17 @@
   align-items: center;
   justify-content: center;
 }
+
+#div1{
+  height: wrap;
+  background:black;
+  justify-content: flex-start;
+  
+  button {
+    margin: 5px;
+  }
+}
+
 #filed {
   width: 50%;
   margin: 10px;

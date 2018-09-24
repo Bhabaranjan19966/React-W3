@@ -77,19 +77,21 @@ class FullScreenDialog extends React.Component {
         var movieList;
         movieList = localStorage.getItem(localStorage.key(Id));
         console.log(localStorage);
-        if (movieList.indexOf(moviename) < 0 && this.state.add) {
-            movieList += ",,,";
-            movieList += moviename;
+        if (moviename) {
+            if (movieList.indexOf(moviename) < 0 && this.state.add) {
+                movieList += ",,,";
+                movieList += moviename;
+            }
+            localStorage.setItem(localStorage.key(Id), movieList);
         }
-        localStorage.setItem(localStorage.key(Id), movieList);
         movieList = movieList.split(",,,");
         console.log(movieList)
         const ListMovies = movieList.map((movieName, index) => {
-            
-            if(movieName != undefined){
+
+            if (movieName != undefined) {
                 return (
-                    <ul>
-                        <ListItem button>
+                    <ul key={index}>
+                        <ListItem button >
                             <ListItemText primary={movieName} key={index} onClick={() => this.handleDeleteMovie(movieName, Id)} />
                         </ListItem>
                         <Divider />
@@ -115,7 +117,7 @@ class FullScreenDialog extends React.Component {
                                 Sound
                             </Typography>
                         </Toolbar>
-                        <Button color="inherit" onClick={this.handleDeleteMode} id="deltebutton">
+                        <Button color="primary" variant="contained" onClick={this.handleDeleteMode} id="deltebutton">
                             Turn on Delete mode
                          </Button>
                     </AppBar>

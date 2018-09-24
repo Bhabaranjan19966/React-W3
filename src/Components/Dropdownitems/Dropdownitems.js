@@ -45,13 +45,13 @@ class Item extends Component {
                         function (jsonData) {
                             console.log(jsonData);
                             for (var i = 0; i < jsonData.results.length; i++) {
-                                k = jsonData.results.map((data) => {
+                                k = jsonData.results.map((data , index) => {
                                     //console.log(data.poster_path);
                                     if (data.name) {
                                         //console.log(that);
 
                                         return (
-                                            <Card className="Card">
+                                            <Card className="Card" key={index}>
                                                 <CardActionArea>
                                                     <CardMedia
                                                         component="img"
@@ -100,7 +100,7 @@ class Item extends Component {
                                         );
                                     } else {
                                         return (
-                                            <Card className="Card">
+                                            <Card className="Card" key={index}>
                                                 <CardActionArea>
                                                     <CardMedia
                                                         component="img"

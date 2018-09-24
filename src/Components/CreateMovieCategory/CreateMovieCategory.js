@@ -37,7 +37,6 @@ export default class FormDialog extends React.Component {
       localStorage.setItem(getText, moviename);
       document.getElementById('createCategory').click();
     }
-
   }
 
   render() {

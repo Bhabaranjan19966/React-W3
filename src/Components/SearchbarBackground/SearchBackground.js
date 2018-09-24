@@ -4,7 +4,7 @@ import Ip from '../InputField/Input'
 import '../../Stylesheet/main.scss';
 import Grid from '../../Components/Grids/Grids.js';
 import TList from '../../Components/Topmovies/Topmovies.js';
-
+import UserDefinedCategories from '../UserDefinedCategories/UserDefinedCategories.js';
 
 class Search extends Component {
     reRender = () => {
@@ -15,12 +15,14 @@ class Search extends Component {
     render() {
         return (
             <div>
+                
                 <div className="Background"  >
                     <Ip reRender={this.reRender} />
                 </div>
                 <div className="GridView" id='results'>
                     <Grid value={window.queryString} />
                 </div>
+                {/* <UserDefinedCategories/> */}
                 <div className="the_top_movies">
                     <TList />
                 </div>

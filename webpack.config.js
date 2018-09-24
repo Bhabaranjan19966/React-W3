@@ -14,11 +14,16 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js)$/,
           exclude: /node_modules/,
-          use: {
-            loader: "babel-loader"
-          }
+          use: [
+            { loader: "eslint-loader", 
+              options: {
+                fix: true
+              }
+            },
+            { loader: "babel-loader" },
+          ]
         },
         {
           test: /\.css$/,
@@ -47,6 +52,7 @@ module.exports = {
         }
       ]
     },
-    plugins: [htmlPlugin]
+    plugins: [htmlPlugin],
+    mode: 'development'
   };
   

@@ -25,10 +25,10 @@ class Topmovies extends Component {
             .then(
                 function (jsonData) {
                     thetopList = jsonData.results.map(
-                        data => {
+                        (data,index) => {
 
                             return (
-                                <Card className="Card">
+                                <Card className="Card" key={index}>
                                     <CardActionArea>
                                         <CardMedia
                                             component="img"

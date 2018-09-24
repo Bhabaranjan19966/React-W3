@@ -1,0 +1,62 @@
+Arguments: 
+  /usr/bin/node /usr/local/bin/yarn add eslint eslint-loader --dev
+
+PATH: 
+  /home/niit/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.10.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/home/niit/assignments/React-week/node_modules/@babel/code-frame'
+
+npm manifest: 
+  {
+    "name": "week-3-assignment",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "webpack-dev-server --mode development --open --watch-poll",
+      "build": "webpack --mode production"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "babel-core": "^6.26.3",
+      "babel-loader": "^7.1.5",
+      "babel-plugin-transform-class-properties": "^6.24.1",
+      "babel-preset-env": "^1.7.0",
+      "babel-preset-react": "^6.24.1",
+      "css-loader": "^1.0.0",
+      "html-webpack-plugin": "^3.2.0",
+      "node-sass": "^4.9.3",
+      "sass-loader": "^7.1.0",
+      "style-loader": "^0.23.0",
+      "webpack": "^4.19.0",
+      "webpack-cli": "^3.1.0",
+      "webpack-dev-server": "^3.1.8"
+    },
+    "dependencies": {
+      "@material-ui/core": "^3.1.0",
+      "@material-ui/icons": "^3.0.1",
+      "material-ui": "^0.20.2",
+      "react": "^16.5.1",
+      "react-dom": "^16.5.1",
+      "react-router-dom": "^4.3.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

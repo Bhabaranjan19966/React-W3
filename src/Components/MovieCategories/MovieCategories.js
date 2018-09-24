@@ -108,7 +108,7 @@ class FullScreenDialog extends React.Component {
     for (var i = 0; i < localStorage.length; i++) {
       let k = i;
       list.push(
-        <ul><ListItem button>
+        <ul key={k}><ListItem button>
           <ListItemText primary={localStorage.key(i)} onClick={() => this.handlerAddMovieToCategory(moviename, k)} />
         </ListItem>
           <Divider />
