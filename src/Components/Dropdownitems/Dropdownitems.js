@@ -136,7 +136,7 @@ class Item extends Component {
                                                             to={{
                                                                 pathname: "/AddtoCatagory",
                                                                 state: {
-                                                                    moviename: data.name,
+                                                                    moviename: data.title,
                                                                     popularity: data.popularity,
                                                                     overview: data.overview,
                                                                 }
