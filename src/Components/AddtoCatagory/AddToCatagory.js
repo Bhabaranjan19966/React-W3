@@ -21,9 +21,12 @@ function Transition(props) {
 }
 
 class FullScreenDialog extends React.Component {
-  state = {
-    open: true,
-  };
+  constructor(props){
+    super(props)
+    state = {
+      open: true,
+    };
+  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
