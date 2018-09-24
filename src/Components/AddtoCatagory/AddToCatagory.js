@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-//import ListItemText from '@material-ui/core/ListItemText';
+import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -21,12 +21,11 @@ function Transition(props) {
 }
 
 class FullScreenDialog extends React.Component {
-  constructor(props){
-    super(props)
+  
     state = {
       open: true,
     };
-  }
+  
 
   handleClickOpen = () => {
     this.setState({ open: true });
