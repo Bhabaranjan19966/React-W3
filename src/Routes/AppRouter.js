@@ -1,14 +1,15 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import { BrowserRouter , Switch } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
-import App from '../Components/app.js';
-import Modal from '../Components/Modal/modal.js';
-import AddToCatagory from '../Components/AddtoCatagory/AddToCatagory.js';
-import CreateMovieCategory from '../Components/CreateMovieCategory/CreateMovieCategory.js';
-import successFullRedirect from '../Components/SuccessFullRedirect/SuccessFullRedirect.js';
-import MovieCategories from '../Components/MovieCategories/MovieCategories.js';
-import ListMoviesOfExistingCategory from '../Components/ListMoviesOfExistingCategory/ListMoviesOfExistingCategory.js';
-function routingPages  (props)  {
+import App from '../Components/app';
+import Modal from '../Components/Modal/modal';
+import AddToCatagory from '../Components/AddtoCatagory/AddToCatagory';
+import CreateMovieCategory from '../Components/CreateMovieCategory/CreateMovieCategory';
+import successFullRedirect from '../Components/SuccessFullRedirect/SuccessFullRedirect';
+import MovieCategories from '../Components/MovieCategories/MovieCategories';
+import ListMoviesOfExistingCategory from '../Components/ListMoviesOfExistingCategory/ListMoviesOfExistingCategory';
+function routingPages  ()  {
         return (
             <BrowserRouter>
                 <Switch>

@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -24,13 +25,13 @@ function DenseAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" id="Home_Page_appbar">
         <Toolbar variant="dense">
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit">
-            Photos
+            Browse Movies
           </Typography>
         </Toolbar>
       </AppBar>

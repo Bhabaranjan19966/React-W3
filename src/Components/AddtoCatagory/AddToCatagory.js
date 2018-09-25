@@ -1,8 +1,7 @@
+/* eslint react/jsx-filename-extension: 0 */
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
@@ -21,31 +20,38 @@ function Transition(props) {
 }
 
 class FullScreenDialog extends React.Component {
-  
-    state = {
+  constructor(props){
+    super(props)
+    this.state = {
       open: true,
     };
+    this.getCategoriyList= this.getCategoriyList.bind(this);
+    this.handleClickOpen=this.handleClickOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.changepage = this.changepage.bind(this);
+    
+  }
   
 
-  handleClickOpen = () => {
+  handleClickOpen  () {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
+  handleClose  ()  {
     this.setState({ open: false });
   };
 
-  changepage = () => {
+  changepage  ()  {
     document.getElementById('newcat').click();
   }
 
-  getCategoriyList = () => {
+  getCategoriyList  ()  {
     document.getElementById('catlist').click();
   }
   render() {
     //const { classes } = this.props;
     const { moviename } = this.props.location.state;
-    console.log(moviename);
+    //console.log(moviename);
     return (
       <div>
         <Link id="catlist"

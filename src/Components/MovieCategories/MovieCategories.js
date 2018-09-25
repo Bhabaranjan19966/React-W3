@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 //import PropTypes from 'prop-types';
 //import { withStyles } from '@material-ui/core/styles';
@@ -22,22 +23,32 @@ function Transition(props) {
 
 var keyvalue; 
 class FullScreenDialog extends React.Component {
-  state = {
-    open: true,
-    deleteMode: false,
-    renaemMode: false,
-    newName:'',
-  };
+  
+  constructor(props){
+    super(props)
+    this.state = {
+      open: true,
+      deleteMode: false,
+      renaemMode: false,
+      newName:'',
+    };
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleRenameCategory = this.handleRenameCategory.bind(this);
+    this.handleDeleteCategory = this.handleDeleteCategory.bind(this);
+    this.handlerAddMovieToCategory = this.handlerAddMovieToCategory.bind(this);
+  } 
 
-  handleClickOpen = () => {
+  handleClickOpen  ()  {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
+  handleClose  ()  {
     this.setState({ open: false });
+    document.getElementById('back_home').click();
   };
 
-  handleRenameCategory = () => {
+  handleRenameCategory  ()  {
     console.log("renaem"+"----------"+this.state.renaemMode);
     if (this.state.renaemMode) {
       console.log('start renameing');
@@ -57,7 +68,7 @@ class FullScreenDialog extends React.Component {
     }
   }
 
-  handleDeleteCategory = () => {
+  handleDeleteCategory  ()  {
     if (this.state.deleteMode) {
       document.getElementById("deletion").innerHTML = 'Start Deleting';
       if (this.state.renaemMode) document.getElementById("rename").innerHTML = 'Start Renaming';
@@ -75,7 +86,7 @@ class FullScreenDialog extends React.Component {
     }
 
   }
-  handlerAddMovieToCategory = (moviename, LinkId) => {
+  handlerAddMovieToCategory  (moviename, LinkId)  {
     console.log(moviename + "--------------" + LinkId);
     if (!this.state.deleteMode && !this.state.renaemMode) document.getElementById(LinkId).click();
     else if(this.state.deleteMode){
@@ -135,6 +146,8 @@ class FullScreenDialog extends React.Component {
                   }
                 }}
               >  </Link>
+
+              <Link id="back_home" to="/"> </Link>
         <Dialog
           fullScreen
           open={this.state.open}

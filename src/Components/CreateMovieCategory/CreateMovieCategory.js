@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -10,20 +11,29 @@ import { Link } from 'react-router-dom';
 
 
 
-export default class FormDialog extends React.Component {
-  state = {
-    open: true,
-  };
+export default class CreateMovieCategory extends React.Component {
+  
+  constructor(props){
+    super(props)
+    this.state = {
+      open: true,
+    };
+    this.handleClickOpen=this.handleClickOpen.bind(this);
+    this.handleClose=this.handleClose.bind(this);
+    this.handleCreateCategory=this.handleCreateCategory.bind(this);    
+  }
+  
+  
 
-  handleClickOpen = () => {
+  handleClickOpen  ()  {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
+  handleClose  ()  {
     document.getElementById('redirect_back').click();
     this.setState({ open: false });
   };
-  handleCreateCategory = (moviename) => {
+  handleCreateCategory  (moviename)  {
 
     var getText = document.getElementById('name').value;
     //console.log(!getText);

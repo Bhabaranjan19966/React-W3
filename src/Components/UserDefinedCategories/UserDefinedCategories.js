@@ -1,13 +1,18 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import {Component} from 'react';
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
-import Icon from "@material-ui/core/Icon";
+//import Icon from "@material-ui/core/Icon";
+//import MovieList from '../MovieList/MovieList.js'
 import '../../Stylesheet/main.scss'
 var List = [];
+var modal;
 class UserDefinedCategory extends Component{
     state={
         id:'',
+        modalDisplayValue:false,
+        categoryName:"",
     }
 
     handlerRenderCategories = () =>{
@@ -19,7 +24,7 @@ class UserDefinedCategory extends Component{
             for(var i = 0 ; i < localStorage.length;i++){
                let k = i ;
                 List.push(
-                <Button variant="extendedFab" aria-label="Delete" id="b1" key={k} onClick={()=>this.handleGoTOListOfCategory(k)}>
+                <Button variant="extendedFab" aria-label="Delete" id="b1" key={k} onClick={()=>this.rendrModalView(k)}>
                 <AddIcon />
                 {localStorage.key(k)}
               </Button>
@@ -28,35 +33,27 @@ class UserDefinedCategory extends Component{
         }
 
     }
-    handleGoTOListOfCategory = (Id) =>{
-
-        this.setState({
-            id:Id,
-        },
-        ()=>{
-            
-        }
-        )
-                
+    rendrModalView = (k) =>{
+        console.log('rendering modal view');
+        let moviecategory = localStorage.key(k);
+        this.props.triggerRender(moviecategory);
     }
-
+    closeModalView = () =>{
+        this.setState({
+            modalDisplayValue:false,
+        })
+    }
     render(){
         this.handlerRenderCategories();
         return(
            
             <div id="div1">
+                
                 {
                     List.map( categoryName => categoryName)
                 }
-                 <Link  id="Navigate"
-            to={{
-                pathname:"",
-                state:{
-                    Id:this.state.id,
-                }
-
-            }}> </Link>
             </div>
+            
         )
     }
 }

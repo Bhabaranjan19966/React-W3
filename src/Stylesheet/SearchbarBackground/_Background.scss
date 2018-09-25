@@ -4,26 +4,55 @@
 }
 .Background {
   width: 100%;
-  background: palevioletred;
+  background:black;
   display: flex;
-  height: 80px;
-  margin-bottom: 20px;
+  height: 40vh;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  padding-bottom: 10px;
+  button{
+    margin-top:8px;
+    height: 30px;;
+  }
+}
+.Lable_user_categories{
+  background: black;
+  text-align: center;
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.5em;
+  padding-top:30px;
+  -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 7px;
+    background: black;
+
+}
+.marquee:hover {
+  animation-play-state: paused
 }
 
+@keyframes scroll{
+  0% {left:800px;}
+  100% {left:-800px;}
+  }
 #div1{
   height: wrap;
   background:black;
-  justify-content: flex-start;
-  
+  justify-content: center;
+  text-align: center;
   button {
     margin: 5px;
+    position: relative;
+    height: 30px;
   }
 }
 
 #filed {
-  width: 50%;
+  width: 100%;
   margin: 10px;
   background: white;
   box-shadow: 2px;
@@ -55,11 +84,14 @@
 .GridView {
   width: wrap;
   height: 100%;
-  background: rgb(205, 233, 151);
+  background:black;
   display: flex;
   justify-content: space-between;
   align-content: center;
   margin: 0;
+}
+#Home_Page_appbar{
+  background: #4A4238;
 }
 .image-container {
   height: 270px;
@@ -101,13 +133,16 @@ button {
   height: wrap;
   overflow-x: auto;
   align-content: center;
-  padding-left: 7%;
   flex-wrap: nowrap;
+  background: black;
+  color: white;
   .Card {
     display: block;
     min-width: 290px;
     height: 500px;
     margin: 1em;
+    
+    box-shadow: 0px 10px 20px rgba(200,200,50,0.2);
     p {
       height: 100px;
       overflow: hidden;
@@ -142,11 +177,14 @@ button {
 .MuiList-root-108, .MuiList-padding-109{
   margin-top: 50px;
 }
+#differs{
+  font-family: 'Courier New', Courier, monospace;
+}
 @media screen and (max-width: 618px) {
   .GridView {
     width: wrap;
     height: 100%;
-    background: rgb(205, 233, 151);
+    background: black;
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -157,7 +195,7 @@ button {
   .GridView {
     width: wrap;
     height: 100%;
-    background: rgb(205, 233, 151);
+    background: black;
     display: flex;
     justify-content: space-between;
     align-content: center;

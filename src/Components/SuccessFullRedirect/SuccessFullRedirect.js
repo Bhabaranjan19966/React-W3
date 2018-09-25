@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,15 +16,15 @@ function Transition(props) {
 
 
 class AlertDialogSlide extends React.Component {
-  state = {
-    open: true,
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      open: true,
+    };
+    this.handleClose=this.handleClose.bind(this);
+  }
 
-  handleClickOpen = () => {
-    
-  };
-
-  handleClose = () => {
+  handleClose  ()  {
       
     setTimeout(()=>{
         document.getElementById('Rdirect_Home').click();

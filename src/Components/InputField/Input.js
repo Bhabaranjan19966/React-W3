@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
@@ -9,7 +10,7 @@ import Fetch from '../Dropdownitems/Dropdownitems.js'
 import CommunicationCallMissedOutgoing from 'material-ui/SvgIcon';
 var v;
 class Ip extends Component {
-
+    
     state = {
         value: 0,
     }
@@ -48,7 +49,7 @@ class Ip extends Component {
 
                 </TextField>
                 <Button variant="contained" color="primary" onClick={this.nameChangeHandler} >
-                    Primary
+                    Search
               </Button>
 
                 {/* {this.fetchData()} */}

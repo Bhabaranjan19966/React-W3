@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import { Component } from 'react';
 import ContentDeleteSweep from 'material-ui/SvgIcon';
@@ -15,6 +16,7 @@ import DeviceDataUsage from 'material-ui/SvgIcon';
 
 var k, previous, after;
 class Item extends Component {
+    
     state = {
         list: "",
     }
@@ -79,7 +81,7 @@ class Item extends Component {
                                                                 overview: data.overview,
                                                             }
                                                         }}>
-                                                            Share
+                                                           View Details
                                                     </Link>
                                                     </Button>
                                                     <Button size="small" color="primary" onClick={() => that.print([data.name, data.popularity, data.overview])}>
@@ -92,7 +94,8 @@ class Item extends Component {
                                                                     overview: data.overview,
                                                                 }
                                                             }}
-                                                        > Learn more
+                                                        > 
+                                                        AddtoCatagory
                                                         </Link>
                                                     </Button>
                                                 </CardActions>
@@ -128,7 +131,7 @@ class Item extends Component {
                                                                 overview: data.overview,
                                                             }
                                                         }}>
-                                                            Share
+                                                            View Details
                                                     </Link>
                                                     </Button>
                                                     <Button size="small" color="primary" >
@@ -141,7 +144,7 @@ class Item extends Component {
                                                                     overview: data.overview,
                                                                 }
                                                             }}
-                                                        > Learn more </Link>
+                                                        > Add to Catagory </Link>
                                                     </Button>
                                                 </CardActions>
                                             </Card>

@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import { Component } from 'react';
 import '../../Stylesheet/main.scss';

@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -18,18 +19,27 @@ function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
 class FullScreenDialog extends React.Component {
-    state = {
-        open: true,
-        deleteMode: false,
-        add: true,
-    };
-    handleClickOpen = () => {
+    
+    constructor(props){
+        super(props);
+        this.state = {
+            open: true,
+            deleteMode: false,
+            add: true,
+        };
+        this.handleClickOpen = this.handleClickOpen.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
+        this.handleDeleteMode = this.handleDeleteMode.bind(this);    
+    }
+
+    handleClickOpen  ()  {
         this.setState({ open: true });
     };
-    handleClose = () => {
+    handleClose  ()  {
         document.getElementById('Home_page_redirect').click();
     };
-    handleDeleteMode = () => {
+    handleDeleteMode  ()  {
         if (this.state.deleteMode) {
             document.getElementById('deltebutton').innerHTML = "Turn ON Delete mode";
             this.setState({
@@ -45,7 +55,7 @@ class FullScreenDialog extends React.Component {
         }
     }
 
-    handleDeleteMovie = (moviename, id) => {
+    handleDeleteMovie  (moviename, id)  {
         console.log(id + "----------" + moviename);
 
         if (this.state.deleteMode) {
