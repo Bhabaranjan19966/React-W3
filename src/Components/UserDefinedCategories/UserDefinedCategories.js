@@ -1,27 +1,34 @@
 /* eslint react/jsx-filename-extension: 0 */
+/*global localStorage:true*/
+/* react/prop-types: 0 */
+/*no-undef: 0 */
 import React from 'react';
-import {Component} from 'react';
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 //import Icon from "@material-ui/core/Icon";
 //import MovieList from '../MovieList/MovieList.js'
 import '../../Stylesheet/main.scss'
 var List = [];
-var modal;
-class UserDefinedCategory extends Component{
-    state={
-        id:'',
-        modalDisplayValue:false,
-        categoryName:"",
+class UserDefinedCategory extends React.Component{
+    
+    constructor(props){
+        super(props)
+        this.state={
+            //id:'',
+            //modalDisplayValue:false,
+            //categoryName:"",
+        }
+        this.handlerRenderCategories=this.handlerRenderCategories.bind(this);
+        this.rendrModalView=this.rendrModalView.bind(this);
+       // this.closeModalView=this.closeModalView.bind(this);
     }
+    
 
-    handlerRenderCategories = () =>{
+    handlerRenderCategories  () {
         List=[];
         localStorage.removeItem('loglevel:webpack-dev-server');
-        if(localStorage.length < 1 ) {
-            return;
-        }else {
-            for(var i = 0 ; i < localStorage.length;i++){
+        if(localStorage.length > 0) {
+            for(var i = 0 ; i < localStorage.length;i+=1){
                let k = i ;
                 List.push(
                 <Button variant="extendedFab" aria-label="Delete" id="b1" key={k} onClick={()=>this.rendrModalView(k)}>
@@ -33,15 +40,9 @@ class UserDefinedCategory extends Component{
         }
 
     }
-    rendrModalView = (k) =>{
-        console.log('rendering modal view');
+    rendrModalView  (k) {
         let moviecategory = localStorage.key(k);
         this.props.triggerRender(moviecategory);
-    }
-    closeModalView = () =>{
-        this.setState({
-            modalDisplayValue:false,
-        })
     }
     render(){
         this.handlerRenderCategories();

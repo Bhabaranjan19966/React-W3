@@ -1,4 +1,8 @@
 /* eslint react/jsx-filename-extension: 0 */
+/*no-undef: 0 */
+/*global window: 1 */
+/*global document: 1 */
+/*global localStorage: 1 */
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -34,24 +38,23 @@ export default class CreateMovieCategory extends React.Component {
     this.setState({ open: false });
   };
   handleCreateCategory  (moviename)  {
-
     var getText = document.getElementById('name').value;
     //console.log(!getText);
     //console.log(getText.lenght+" my text filed value");     
     if (!getText || (window.localStorage.getItem(getText))) {
-      console.log('no entry');
-      // console.log(TextFieldValue +" my text filed value");     
-      // console.log( TextFieldValue +"-----  "+TextFieldValue.lenght==0+ " -- -" + window.localStorage.getItem(TextFieldValue));
+      
+      return 0;
     } else {
-      console.log(moviename+"---------added"+getText);
+     // console.log(moviename+"---------added"+getText);
       localStorage.setItem(getText, moviename);
       document.getElementById('createCategory').click();
+      return 0;
     }
   }
 
   render() {
     const { moviename } = this.props.location.state;
-    console.log(moviename);
+    //console.log(moviename);
     return (
       <div>
         <Dialog

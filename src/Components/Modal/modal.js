@@ -1,8 +1,8 @@
 /* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
-import { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
-import Modal from '@material-ui/core/Modal';
+// import { Component } from 'react';
+// // import Typography from '@material-ui/core/Typography';
+// import Modal from '@material-ui/core/Modal';
 import '../../Stylesheet/main.scss';
 import { Link } from 'react-router-dom';
 function modal(props) {

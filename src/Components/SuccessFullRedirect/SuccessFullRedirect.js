@@ -1,4 +1,5 @@
 /* eslint react/jsx-filename-extension: 0 */
+/*global document: 1 */
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,7 +9,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import {Link} from 'react-router-dom';
-import InProgress from '../InProgress/InProgress.js';
+import InProgress from '../InProgress/InProgress';
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;

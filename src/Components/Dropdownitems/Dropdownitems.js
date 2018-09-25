@@ -1,7 +1,7 @@
 /* eslint react/jsx-filename-extension: 0 */
+/*no-undef: 0 */
+/*global fetch : 1 */
 import React from 'react';
-import { Component } from 'react';
-import ContentDeleteSweep from 'material-ui/SvgIcon';
 import '../../Stylesheet/main.scss';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -12,27 +12,29 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from '../Modal/modal.js';
 import { Link } from 'react-router-dom';
-import DeviceDataUsage from 'material-ui/SvgIcon';
 
-var k, previous, after;
-class Item extends Component {
-    
-    state = {
-        list: "",
+var k, previous, dataValue;
+class Item extends React.Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            //list: "",
+        }
+        this.fetchData = this.fetchData.bind(this);
+        this.print = this.print.bind(this);
     }
-    list;
-    name = window.queryString;
-    dataValue;
-    print = (value) => {
 
-        console.log(value);
-        this.dataValue = <Modal name={value[0]} popularity={value[1]} overview={value[2]} />
+    // name = window.queryString;
+    print(value) {
+
+        dataValue = <Modal name={value[0]} popularity={value[1]} overview={value[2]} />
         this.setState({
 
         });
     }
-    fetchData = () => {
-        console.log(this.props.value + "prp    -----------will mount");
+    fetchData() {
         previous = this.props.value;
         if (this.props.value) {
             var line = 1;
@@ -45,13 +47,10 @@ class Item extends Component {
                         })
                     .then(
                         function (jsonData) {
-                            console.log(jsonData);
-                            for (var i = 0; i < jsonData.results.length; i++) {
-                                k = jsonData.results.map((data , index) => {
-                                    //console.log(data.poster_path);
-                                    if (data.name) {
-                                        //console.log(that);
 
+                            for (var i = 0; i < jsonData.results.length; i += 1) {
+                                k = jsonData.results.map((data, index) => {
+                                    if (data.name) {
                                         return (
                                             <Card className="Card" key={index}>
                                                 <CardActionArea>
@@ -81,7 +80,7 @@ class Item extends Component {
                                                                 overview: data.overview,
                                                             }
                                                         }}>
-                                                           View Details
+                                                            View Details
                                                     </Link>
                                                     </Button>
                                                     <Button size="small" color="primary" onClick={() => that.print([data.name, data.popularity, data.overview])}>
@@ -94,8 +93,8 @@ class Item extends Component {
                                                                     overview: data.overview,
                                                                 }
                                                             }}
-                                                        > 
-                                                        AddtoCatagory
+                                                        >
+                                                            AddtoCatagory
                                                         </Link>
                                                     </Button>
                                                 </CardActions>
@@ -122,7 +121,10 @@ class Item extends Component {
                                                     </CardContent>
                                                 </CardActionArea>
                                                 <CardActions>
-                                                    <Button size="small" color="primary" onClick={() => that.print([data.title, data.popularity, data.overview])}>
+                                                    <Button
+                                                        size="small"
+                                                        color="primary"
+                                                        onClick={() => that.print([data.title, data.popularity, data.overview])}>
                                                         <Link to={{
                                                             pathname: "/MovieInfo",
                                                             state: {
@@ -156,16 +158,13 @@ class Item extends Component {
                             });
 
                         });
-                line++;
+                line += 1;
             }
         }
     }
-    componentDidMount() {
-        console.log('mounted drop down');
-    }
     render() {
-        console.log('rendering drop down');
-        if (previous != this.props.value) this.fetchData();
+
+        if (previous !== this.props.value) this.fetchData();
         if (!k) {
             return <section></section>;
         }
@@ -175,7 +174,7 @@ class Item extends Component {
         const values = k.map((data) => data)
         return (
             <div>
-                {this.dataValue}
+                {dataValue}
                 {values}
             </div>
         );

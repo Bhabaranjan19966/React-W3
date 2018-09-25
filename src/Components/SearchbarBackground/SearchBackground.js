@@ -1,14 +1,14 @@
 /* eslint react/jsx-filename-extension: 0 */
+/*no-undef: 0 */
+/*global window: 1 */
 import React from 'react';
-import { Component } from 'react';
 import Ip from '../InputField/Input'
 import '../../Stylesheet/main.scss';
-import Grid from '../../Components/Grids/Grids.js';
-import TList from '../../Components/Topmovies/Topmovies.js';
-import UserDefinedCategories from '../UserDefinedCategories/UserDefinedCategories.js';
-import MovieList from '../MovieList/MovieList.js'
-class Search extends Component {
-
+import Grid from '../../Components/Grids/Grids';
+import TList from '../../Components/Topmovies/Topmovies';
+import UserDefinedCategories from '../UserDefinedCategories/UserDefinedCategories';
+import MovieList from '../MovieList/MovieList'
+class Search extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -17,8 +17,6 @@ class Search extends Component {
         }
         this.reRender=this.reRender.bind(this);
     }
-
-
     reRender  (moviecategoryname)  {
         if (this.state.renderMovieList) {
             this.setState({
@@ -45,10 +43,17 @@ class Search extends Component {
                     <div className="Lable_user_categories"> User Categories </div>
                     <UserDefinedCategories triggerRender={this.reRender} />
                 </div>
-                <MovieList status={this.state.renderMovieList} triggerRender={this.reRender} movieCategoryName={this.state.movieCategoryName} />
-                <div className="Lable_user_categories" id="differs"> Trending Movies </div>
+                <MovieList 
+                status={this.state.renderMovieList} 
+                triggerRender={this.reRender} 
+                movieCategoryName={this.state.movieCategoryName} />
+                <div 
+                className="Lable_user_categories" 
+                id="differs"> 
+                Trending Movies 
+                </div>
                 <div className="the_top_movies ">
-                    <div className="the_top_movies marquee">
+                    <div className="the_top_movies">
                         <TList />
                     </div>
                 </div>

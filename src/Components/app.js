@@ -1,6 +1,6 @@
 /* eslint react/jsx-filename-extension: 0 */
+/*no-undef: 0 */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -42,8 +42,6 @@ function DenseAppBar(props) {
   );
 }
 
-DenseAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+
 
 export default withStyles(styles)(DenseAppBar);

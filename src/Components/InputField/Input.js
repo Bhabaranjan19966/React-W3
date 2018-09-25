@@ -1,48 +1,53 @@
+
 /* eslint react/jsx-filename-extension: 0 */
+/*global document:1 */
+/*global window: 1 */
 import React from 'react';
-import { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../Stylesheet/main.scss'
-import Modal from '@material-ui/core/Modal';
-import Grid from '../Grids/Grids.js';
-import Fetch from '../Dropdownitems/Dropdownitems.js'
-import CommunicationCallMissedOutgoing from 'material-ui/SvgIcon';
+// import Modal from '@material-ui/core/Modal';
+// import Grid from '../Grids/Grids.js';
+// import Fetch from '../Dropdownitems/Dropdownitems.js'
+// import CommunicationCallMissedOutgoing from 'material-ui/SvgIcon';
 var v;
-class Ip extends Component {
-    
-    state = {
-        value: 0,
+class Ip extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+           // value: 0,
+        }
+        this.nameChangeHandler=this.nameChangeHandler.bind(this);
+        this.wipeValue=this.wipeValue.bind(this);
     }
-    follow;
-    nameChangeHandler = () => {
+    nameChangeHandler  ()  {
         v = document.getElementById('filed').value;
         window.queryString = v;
-        console.log(window.queryString + 'changed value');
+        
         if (v) {
             window.modalDisplay = true;
             this.setState(
                 {
-                    value: 1,
+                   // value: 1,
                 }
             );
         }
         document.getElementById('results').style.display = 'block';
         this.props.reRender();
     }
-    wipeValue = () => {
+    wipeValue  () {
         document.getElementById('results').style.display = 'none';
     }
 
     // fetchData = () => {
     //     if(window.queryString){
-    //         console.log('passed data' + window.queryString);
+    
     //         return <Fetch value={window.queryString}/>;
     //     }
     // }
 
     render() {
-        console.log('called render');
+        
         return (
             <div>
                 <TextField id="filed" onClick={this.wipeValue}>

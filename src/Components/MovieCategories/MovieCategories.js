@@ -1,4 +1,6 @@
 /* eslint react/jsx-filename-extension: 0 */
+/*global document :1 */
+/*global localStorage :1 */
 import React from 'react';
 //import PropTypes from 'prop-types';
 //import { withStyles } from '@material-ui/core/styles';
@@ -21,7 +23,6 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-var keyvalue; 
 class FullScreenDialog extends React.Component {
   
   constructor(props){
@@ -49,9 +50,9 @@ class FullScreenDialog extends React.Component {
   };
 
   handleRenameCategory  ()  {
-    console.log("renaem"+"----------"+this.state.renaemMode);
+    //console.log("renaem"+"----------"+this.state.renaemMode);
     if (this.state.renaemMode) {
-      console.log('start renameing');
+      //console.log('start renameing');
       document.getElementById("rename").innerHTML = 'Start Renaming';
       if (this.state.deleteMode) document.getElementById("deletion").innerHTML = 'Start Deleting';
       this.setState({
@@ -87,22 +88,21 @@ class FullScreenDialog extends React.Component {
 
   }
   handlerAddMovieToCategory  (moviename, LinkId)  {
-    console.log(moviename + "--------------" + LinkId);
+    //console.log(moviename + "--------------" + LinkId);
     if (!this.state.deleteMode && !this.state.renaemMode) document.getElementById(LinkId).click();
     else if(this.state.deleteMode){
-      console.log(localStorage.key(LinkId));
+    //  console.log(localStorage.key(LinkId));
       localStorage.removeItem(localStorage.key(LinkId));
       this.setState({
         open: true,
       })
     }else{
       let v = localStorage.getItem(localStorage.key(LinkId));
-      keyvalue = v;
       localStorage.removeItem(localStorage.key(LinkId));
       this.setState({
         newName:v,
       },()=>{
-        console.log(this.state.newName + "------"+v);
+      //  console.log(this.state.newName + "------"+v);
         document.getElementById('renamecat').click();
       })
       
@@ -113,14 +113,16 @@ class FullScreenDialog extends React.Component {
 
   render() {
     var list = [];
-    console.log(keyvalue);
+   // console.log(keyvalue);
     const { moviename } = this.props.location.state;
     localStorage.removeItem("loglevel:webpack-dev-server");
-    for (var i = 0; i < localStorage.length; i++) {
+    for (var i = 0; i < localStorage.length; i+=1) {
       let k = i;
       list.push(
         <ul key={k}><ListItem button>
-          <ListItemText primary={localStorage.key(i)} onClick={() => this.handlerAddMovieToCategory(moviename, k)} />
+          <ListItemText 
+          primary={localStorage.key(i)} 
+          onClick={() => this.handlerAddMovieToCategory(moviename, k)} />
         </ListItem>
           <Divider />
           <Link id={k}
@@ -135,7 +137,7 @@ class FullScreenDialog extends React.Component {
         </ul>
       );
     }
-    console.log(this.state.newName);
+    //console.log(this.state.newName);
     return (
       <div>
         <Link id="renamecat"

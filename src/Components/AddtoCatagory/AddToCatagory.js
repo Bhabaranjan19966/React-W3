@@ -1,5 +1,5 @@
 /* eslint react/jsx-filename-extension: 0 */
-
+/*global document :1 */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Dialog from '@material-ui/core/Dialog';
@@ -33,9 +33,7 @@ class FullScreenDialog extends React.Component {
   }
   
 
-  handleClickOpen  () {
-    this.setState({ open: true });
-  };
+  
 
   handleClose  ()  {
     this.setState({ open: false });
@@ -48,6 +46,10 @@ class FullScreenDialog extends React.Component {
   getCategoriyList  ()  {
     document.getElementById('catlist').click();
   }
+  handleClickOpen  () {
+    this.setState({ open: true });
+  };
+  
   render() {
     //const { classes } = this.props;
     const { moviename } = this.props.location.state;

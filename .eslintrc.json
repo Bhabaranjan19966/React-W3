@@ -1,3 +1,45 @@
 {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules":{
+        "react/destructuring-assignment":[
+            "disable",
+            "always"
+        ],
+        "react/prop-types":[
+            "disable",
+            "always"
+        ],
+        "class-methods-use-this":[
+            0,
+            "always"
+        ],
+        "react/jsx-filename-extension":[
+            "disable",
+            "always"
+        ],
+        "react/no-array-index-key":[
+            "disable",
+            "always"
+        ],
+        "react/forbid-prop-types":[
+            "disable",
+            "always"
+        ],
+        "import/no-named-as-default":[
+            "disable",
+            "always"
+        ],
+        "import/no-named-as-default-member":[
+            "disable",
+            "always"
+        ],
+        "react/sort-comp":[
+            "disable",
+            "always"
+        ],
+        "no-loop-func":[
+            0,
+            "always"
+        ]
+    }
 }

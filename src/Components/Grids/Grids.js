@@ -1,11 +1,9 @@
+/*global window:1 */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 //import Cards from '../Cards/Cards.js';
 import '../../Stylesheet/main.scss';
-import Fetch from '../Dropdownitems/Dropdownitems.js'
+import Fetch from '../Dropdownitems/Dropdownitems';
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -39,8 +37,9 @@ function CenteredGrid(props) {
     // document.getElementById('dropdown').style.display = 'block';
   }
 
-  console.log('grid called');
-  const { classes } = props;
+
+
+  //const { classes } = props;
 
   return (
     <div>
@@ -52,8 +51,5 @@ function CenteredGrid(props) {
   );
 }
 
-CenteredGrid.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(CenteredGrid);

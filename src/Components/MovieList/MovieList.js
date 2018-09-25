@@ -1,4 +1,5 @@
 /* eslint react/jsx-filename-extension: 0 */
+/*global localStorage: 1 */
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -14,26 +15,32 @@ import ListItemText from '@material-ui/core/ListItemText';
 var movieListinCategory = [];
 var movieList;
 class AlertDialog extends React.Component {
-  state = {
-    open: this.props.status,
+  
+  constructor(props){
+    super(props)
+    this.state = {
+      //open: this.props.status,
+    };
+    this.handleClickOpen=this.handleClickOpen.bind(this);
+    this.handleClose=this.handleClose.bind(this);
+    this.renderMovielist=this.renderMovielist.bind(this);
+  }
+  handleClickOpen  () {
+    this.setState({ });
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
+  handleClose  () {
     this.props.triggerRender();
-    this.setState({ open: false });
+    this.setState({  });
   };
    
-  renderMovielist = () =>{
+  renderMovielist  () {
     movieListinCategory = [];
-    console.log('called'); 
+    //console.log('called'); 
      movieList=localStorage.getItem(this.props.movieCategoryName);
       if(movieList!= null){
           movieList = movieList.split(',,,');
-      for(var i = 0 ; i<movieList.length ; i++ ){
+      for(var i = 0 ; i<movieList.length ; i+=1 ){
           movieListinCategory.push(
             <ListItem button divider>
             <ListItemText primary={movieList[i]} />
@@ -45,8 +52,8 @@ class AlertDialog extends React.Component {
   }
 
   render() {
-      console.log(this.props.status+"---------listmovies"+this.props.movieCategoryName);
-       if(this.props.movieCategoryName != " ") this.renderMovielist();
+//      console.log(this.props.status+"---------listmovies"+this.props.movieCategoryName);
+       if(this.props.movieCategoryName !== " ") this.renderMovielist();
        let k = this.props.status; 
        if(movieList==null){
             k=false;
