@@ -35,135 +35,135 @@ class Item extends React.Component {
         });
     }
     fetchData() {
-        const {value}=this.props;
+        const { value } = this.props;
         previous = value;
         if (value) {
             var that = this;
-                fetch(`https://api.themoviedb.org/3/search/movie?api_key=3693fada7703a9016579565320426cde&language=en-US&query=${value}&page=1llo&include_adult=false`)
-                    .then(
-                        function (response) {
-                            return response.json();
-                        })
-                    .then(
-                        function (jsonData) {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=3693fada7703a9016579565320426cde&language=en-US&query=${value}&page=1llo&include_adult=false`)
+                .then(
+                    function (response) {
+                        return response.json();
+                    })
+                .then(
+                    function (jsonData) {
 
-                            for (var i = 0; i < jsonData.results.length; i += 1) {
-                                k = jsonData.results.map((data, index) => {
-                                    let unique = index;
-                                    if (data.name) {
-                                        return (
-                                            <Card className="Card" key={unique}>
-                                                <CardActionArea>
-                                                    <CardMedia
-                                                        component="img"
-                                                        width="130"
-                                                        image={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
-                                                        height="220"
-                                                        title="Contemplative Reptile"
-                                                    />
-                                                    <CardContent>
-                                                        <Typography gutterBottom variant="headline" component="h2">
-                                                            {data.name}<br />Rating:  {data.popularity}
-                                                        </Typography>
-                                                        <Typography component="p">
-                                                            {data.overview}
-                                                        </Typography>
-                                                    </CardContent>
-                                                </CardActionArea>
-                                                <CardActions>
-                                                    <Button size="small" color="primary">
-                                                        <Link to={{
-                                                            pathname: "/movie-info",
+                        for (var i = 0; i < jsonData.results.length; i += 1) {
+                            k = jsonData.results.map((data, index) => {
+                                let unique = index;
+                                if (data.name) {
+                                    return (
+                                        <Card className="Card" key={unique}>
+                                            <CardActionArea>
+                                                <CardMedia
+                                                    component="img"
+                                                    width="130"
+                                                    image={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+                                                    height="220"
+                                                    title="Contemplative Reptile"
+                                                />
+                                                <CardContent>
+                                                    <Typography gutterBottom variant="headline" component="h2">
+                                                        {data.name}<br />Rating:  {data.popularity}
+                                                    </Typography>
+                                                    <Typography component="p">
+                                                        {data.overview}
+                                                    </Typography>
+                                                </CardContent>
+                                            </CardActionArea>
+                                            <CardActions>
+                                                <Button size="small" color="primary">
+                                                    <Link to={{
+                                                        pathname: "/movie-info",
+                                                        state: {
+                                                            moviename: data.name,
+                                                            popularity: data.popularity,
+                                                            overview: data.overview,
+                                                            source: `https://image.tmdb.org/t/p/original/${data.poster_path}`,
+                                                        }
+                                                    }}>
+                                                        Details
+                                                    </Link>
+                                                </Button>
+                                                <Button size="small" color="primary" onClick={() => that.print([data.name, data.popularity, data.overview])}>
+                                                    <Link
+                                                        to={{
+                                                            pathname: "/add-to-catagory",
                                                             state: {
                                                                 moviename: data.name,
                                                                 popularity: data.popularity,
                                                                 overview: data.overview,
-                                                                source:`https://image.tmdb.org/t/p/original/${data.poster_path}`,
                                                             }
-                                                        }}>
-                                                            Details
-                                                    </Link>
-                                                    </Button>
-                                                    <Button size="small" color="primary" onClick={() => that.print([data.name, data.popularity, data.overview])}>
-                                                        <Link
-                                                            to={{
-                                                                pathname: "/add-to-catagory",
-                                                                state: {
-                                                                    moviename: data.name,
-                                                                    popularity: data.popularity,
-                                                                    overview: data.overview,
-                                                                }
-                                                            }}
-                                                        >
-                                                            AddtoCatagory
+                                                        }}
+                                                    >
+                                                        AddtoCatagory
                                                         </Link>
-                                                    </Button>
-                                                </CardActions>
-                                            </Card>
-                                        );
-                                    } else {
-                                        return (
-                                            <Card className="Card" key={unique}>
-                                                <CardActionArea>
-                                                    <CardMedia
-                                                        component="img"
-                                                        width="130"
-                                                        height="220"
-                                                        image={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
-                                                        title="Contemplative Reptile"
-                                                    />
-                                                    <CardContent>
-                                                        <Typography gutterBottom variant="headline" component="h2">
-                                                            {data.title}<br />Rating:  {data.popularity}
-                                                        </Typography>
-                                                        <Typography component="p">
-                                                            {data.overview}
-                                                        </Typography>
-                                                    </CardContent>
-                                                </CardActionArea>
-                                                <CardActions>
-                                                    <Button
-                                                        size="small"
-                                                        color="primary"
-                                                        onClick={() => that.print([data.title, data.popularity, data.overview])}>
-                                                       <Link to={{
-                                                            pathname: "/movie-info",
+                                                </Button>
+                                            </CardActions>
+                                        </Card>
+                                    );
+                                } else {
+                                    return (
+                                        <Card className="Card" key={unique}>
+                                            <CardActionArea>
+                                                <CardMedia
+                                                    component="img"
+                                                    width="130"
+                                                    height="220"
+                                                    image={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+                                                    title="Contemplative Reptile"
+                                                />
+                                                <CardContent>
+                                                    <Typography gutterBottom variant="headline" component="h2">
+                                                        {data.title}<br />Rating:  {data.popularity}
+                                                    </Typography>
+                                                    <Typography component="p">
+                                                        {data.overview}
+                                                    </Typography>
+                                                </CardContent>
+                                            </CardActionArea>
+                                            <CardActions>
+                                                <Button
+                                                    size="small"
+                                                    color="primary"
+                                                    onClick={() => that.print([data.title, data.popularity, data.overview])}>
+                                                    <Link to={{
+                                                        pathname: "/movie-info",
+                                                        state: {
+                                                            moviename: data.title,
+                                                            popularity: data.popularity,
+                                                            overview: data.overview,
+                                                            source: `https://image.tmdb.org/t/p/original/${data.poster_path}`,
+                                                        }
+                                                    }}>
+                                                        Details
+                                                    </Link>
+                                                </Button>
+                                                <Button size="small" color="primary" >
+                                                    <Link
+                                                        to={{
+                                                            pathname: "/add-to-catagory",
                                                             state: {
                                                                 moviename: data.title,
                                                                 popularity: data.popularity,
                                                                 overview: data.overview,
-                                                                source:`https://image.tmdb.org/t/p/original/${data.poster_path}`,
                                                             }
-                                                        }}>
-                                                           Details
-                                                    </Link>
-                                                    </Button>
-                                                    <Button size="small" color="primary" >
-                                                        <Link
-                                                            to={{
-                                                                pathname: "/add-to-catagory",
-                                                                state: {
-                                                                    moviename: data.title,
-                                                                    popularity: data.popularity,
-                                                                    overview: data.overview,
-                                                                }
-                                                            }}
-                                                        > Add to Catagory </Link>
-                                                    </Button>
-                                                </CardActions>
-                                            </Card>
-                                        );
-                                    }
-                                });
-                            }
-                            that.setState({
+                                                        }}
+                                                    > Add to Catagory </Link>
+                                                </Button>
+                                            </CardActions>
+                                        </Card>
+                                    );
+                                }
                             });
+                        }
+                        that.setState({
+                        });
 
-                        });            
+                    });
         }
     }
     render() {
-        const {value} = this.props;
+        const { value } = this.props;
         if (previous !== value) this.fetchData();
         if (!k) {
             return <section></section>;
