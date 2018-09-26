@@ -48,7 +48,8 @@ class Topmovies extends React.Component {
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="headline" component="h2">
-                                                {data.title}<br /> Rating:{data.popularity}
+                                                {data.title}<br />
+                                                 {`Rating :`}{data.popularity}
                                             </Typography>
                                             <Typography component="p" >
                                                 {data.overview}
@@ -57,7 +58,17 @@ class Topmovies extends React.Component {
                                     </CardActionArea>
                                     <CardActions>
                                         <Button size="small" color="primary">
-                                            Share
+                                        <Link to={{
+                                                            pathname: "/MovieInfo",
+                                                            state: {
+                                                                moviename: data.title,
+                                                                popularity: data.popularity,
+                                                                overview: data.overview,
+                                                                source:`https://image.tmdb.org/t/p/original/${data.poster_path}`,
+                                                            }
+                                                        }}>
+                                                        Details
+                                                    </Link>
                                         </Button>
                                         <Button size="small" color="primary">
                                             <Link
@@ -70,7 +81,7 @@ class Topmovies extends React.Component {
                                                     }
                                                 }}
                                             >
-                                                Learn More</Link>
+                                                Add to Category</Link>
                                         </Button>
                                     </CardActions>
                                 </Card>

@@ -10,7 +10,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Modal from '../Modal/modal.js';
+import Modal from '../Modal/modal';
 import { Link } from 'react-router-dom';
 
 var k, previous, dataValue;
@@ -78,9 +78,10 @@ class Item extends React.Component {
                                                                 moviename: data.name,
                                                                 popularity: data.popularity,
                                                                 overview: data.overview,
+                                                                source:`https://image.tmdb.org/t/p/original/${data.poster_path}`,
                                                             }
                                                         }}>
-                                                            View Details
+                                                            Details
                                                     </Link>
                                                     </Button>
                                                     <Button size="small" color="primary" onClick={() => that.print([data.name, data.popularity, data.overview])}>
@@ -131,9 +132,10 @@ class Item extends React.Component {
                                                                 moviename: data.title,
                                                                 popularity: data.popularity,
                                                                 overview: data.overview,
+                                                                source:`https://image.tmdb.org/t/p/original/${data.poster_path}`
                                                             }
                                                         }}>
-                                                            View Details
+                                                           Details
                                                     </Link>
                                                     </Button>
                                                     <Button size="small" color="primary" >

@@ -22,6 +22,7 @@ export default class CreateMovieCategory extends React.Component {
     this.state = {
       open: true,
     };
+    
     this.handleClickOpen=this.handleClickOpen.bind(this);
     this.handleClose=this.handleClose.bind(this);
     this.handleCreateCategory=this.handleCreateCategory.bind(this);    
