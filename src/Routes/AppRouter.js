@@ -4,7 +4,7 @@ import { BrowserRouter , Switch } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import App from '../Components/app';
 import Modal from '../Components/Modal/modal';
-import AddToCatagory from '../Components/AddtoCatagory/AddToCatagory';
+import ListView from '../Components/ListView/ListView';
 import CreateMovieCategory from '../Components/CreateMovieCategory/CreateMovieCategory';
 import successFullRedirect from '../Components/SuccessFullRedirect/SuccessFullRedirect';
 import MovieCategories from '../Components/MovieCategories/MovieCategories';
@@ -14,12 +14,12 @@ function routingPages  ()  {
             <BrowserRouter>
                 <Switch>
                     <Route path="/" exact component={App}></Route>
-                    <Route path="/MovieInfo" exact component={Modal}></Route>
-                    <Route path="/AddtoCatagory" exact component={AddToCatagory}> </Route>
-                    <Route path="/AddtoCatagory/ExistingCategory" exact component={ListMoviesOfExistingCategory}> </Route>
-                    <Route path="/AddtoCatagory/NewCategory" exact component={CreateMovieCategory}> </Route>
-                    <Route path="/AddtoCatagory/NewCategory/successFullOperation" exact component={successFullRedirect}> </Route>
-                    <Route path="/AddtoCatagory/Categories" exact component={MovieCategories}></Route>
+                    <Route path="/movie-info" exact component={Modal}></Route>
+                    <Route path="/add-to-catagory" exact component={ListView}> </Route>
+                    <Route path="/add-to-catagory/existing-category" exact component={ListMoviesOfExistingCategory}> </Route>
+                    <Route path="/add-to-catagory/new-category" exact component={CreateMovieCategory}> </Route>
+                    <Route path="/add-to-catagory/new-category/success-full-operation" exact component={successFullRedirect}> </Route>
+                    <Route path="/add-to-catagory/categories" exact component={MovieCategories}></Route>
                 </Switch>
             </BrowserRouter>
         );

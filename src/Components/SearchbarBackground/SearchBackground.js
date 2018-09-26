@@ -18,7 +18,8 @@ class Search extends React.Component {
         this.reRender=this.reRender.bind(this);
     }
     reRender  (moviecategoryname)  {
-        if (this.state.renderMovieList) {
+        const {state}=this;
+        if (state.renderMovieList) {
             this.setState({
                 renderMovieList: false,
             });
@@ -30,6 +31,7 @@ class Search extends React.Component {
         }
     }
     render() {
+        const {state} = this;
         return (
             <div>
                 <div className="Background "  >
@@ -44,9 +46,9 @@ class Search extends React.Component {
                     <UserDefinedCategories triggerRender={this.reRender} />
                 </div>
                 <MovieList 
-                status={this.state.renderMovieList} 
+                status={state.renderMovieList} 
                 triggerRender={this.reRender} 
-                movieCategoryName={this.state.movieCategoryName} />
+                movieCategoryName={state.movieCategoryName} />
                 <div 
                 className="Lable_user_categories" 
                 id="differs"> 

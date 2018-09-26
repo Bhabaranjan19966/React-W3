@@ -17,28 +17,7 @@ import { Link } from 'react-router-dom';
 
 export default class CreateMovieCategory extends React.Component {
   
-  constructor(props){
-    super(props)
-    this.state = {
-      open: true,
-    };
-    
-    this.handleClickOpen=this.handleClickOpen.bind(this);
-    this.handleClose=this.handleClose.bind(this);
-    this.handleCreateCategory=this.handleCreateCategory.bind(this);    
-  }
-  
-  
-
-  handleClickOpen  ()  {
-    this.setState({ open: true });
-  };
-
-  handleClose  ()  {
-    document.getElementById('redirect_back').click();
-    this.setState({ open: false });
-  };
-  handleCreateCategory  (moviename)  {
+  static handleCreateCategory  (moviename)  {
     var getText = document.getElementById('name').value;
     //console.log(!getText);
     //console.log(getText.lenght+" my text filed value");     
@@ -52,14 +31,36 @@ export default class CreateMovieCategory extends React.Component {
       return 0;
     }
   }
+  constructor(props){
+    super(props)
+    this.state = {
+      open: true,
+    };
+    
+    this.handleClickOpen=this.handleClickOpen.bind(this);
+    this.handleClose=this.handleClose.bind(this);
+  }
+  
+  
+
+  handleClickOpen  ()  {
+    this.setState({ open: true });
+  };
+
+  handleClose  ()  {
+    document.getElementwsById('redirect_back').click();
+    this.setState({ open: false });
+  };
 
   render() {
-    const { moviename } = this.props.location.state;
+    const {location} = this.props;
+    const { moviename } = location.state;
+    const {state} = this;
     //console.log(moviename);
     return (
       <div>
         <Dialog
-          open={this.state.open}
+          open={state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
@@ -82,9 +83,9 @@ export default class CreateMovieCategory extends React.Component {
               Cancel
                 <Link to="/" id="redirect_back">  </Link>
             </Button>
-            <Button onClick={() => this.handleCreateCategory(moviename)} color="primary">
+            <Button onClick={() => CreateMovieCategory.handleCreateCategory(moviename)} color="primary">
               Create Category
-              <Link to="/AddtoCatagory/NewCategory/successFullOperation" id="createCategory">  </Link>
+              <Link to="/add-to-catagory/new-category/success-full-operation" id="createCategory">  </Link>
             </Button>
           </DialogActions>
         </Dialog>

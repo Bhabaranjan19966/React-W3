@@ -20,45 +20,43 @@ function Transition(props) {
 }
 
 class FullScreenDialog extends React.Component {
-  constructor(props){
+  static changepage() {
+    document.getElementById('newcat').click();
+  }
+  constructor(props) {
     super(props)
     this.state = {
       open: true,
     };
-    this.getCategoriyList= this.getCategoriyList.bind(this);
-    this.handleClickOpen=this.handleClickOpen.bind(this);
+    //this.getCategoriyList = this.getCategoriyList.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.changepage = this.changepage.bind(this);
-    
+   // this.changepage = this.changepage.bind(this);
+
   }
-  
 
-  
 
-  handleClose  ()  {
+  static getCategoriyList() {
+    document.getElementById('catlist').click();
+  }
+  handleClickOpen() {
+    this.setState({ open: true });
+  };
+  handleClose() {
     this.setState({ open: false });
   };
 
-  changepage  ()  {
-    document.getElementById('newcat').click();
-  }
-
-  getCategoriyList  ()  {
-    document.getElementById('catlist').click();
-  }
-  handleClickOpen  () {
-    this.setState({ open: true });
-  };
-  
   render() {
     //const { classes } = this.props;
-    const { moviename } = this.props.location.state;
+    const { state } = this;
+    const { location } = this.props;
+    const { moviename } = location.state;
     //console.log(moviename);
     return (
       <div>
         <Link id="catlist"
           to={{
-            pathname: "/AddtoCatagory/Categories",
+            pathname: "/add-to-catagory/categories",
             state: {
               moviename: moviename,
             }
@@ -66,7 +64,7 @@ class FullScreenDialog extends React.Component {
         >  </Link>
         <Dialog
           fullScreen
-          open={this.state.open}
+          open={state.open}
           onClose={this.handleClose}
           TransitionComponent={Transition}
         >
@@ -76,21 +74,21 @@ class FullScreenDialog extends React.Component {
                 <Link to="/"> <CloseIcon /></Link>
               </IconButton>
               <Typography variant="title" color="inherit" >
-                Sound
+                Where Do You Want To Add ??
               </Typography>
-              
+
             </Toolbar>
           </AppBar>
           <List>
             <ListItem button>
-              <ListItemText primary="Add to an existing catagory" onClick={this.getCategoriyList} />
+              <ListItemText primary="Add to an existing catagory" onClick={FullScreenDialog.getCategoriyList} />
             </ListItem>
             <Divider />
             <ListItem button>
-              <ListItemText primary="Create new catagory" onClick={this.changepage} />
+              <ListItemText primary="Create new catagory" onClick={FullScreenDialog.changepage} />
               <Link id="newcat"
                 to={{
-                  pathname: "/AddtoCatagory/NewCategory",
+                  pathname: "/add-to-catagory/new-category",
                   state: {
                     moviename: moviename,
                   }

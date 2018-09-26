@@ -40,11 +40,11 @@ function CenteredGrid(props) {
 
 
   //const { classes } = props;
-
+  const {value} = props;
   return (
     <div>
       <div className="flex-container">
-        <Fetch value={props.value} />
+        <Fetch value={value} />
       </div>
     </div>
 

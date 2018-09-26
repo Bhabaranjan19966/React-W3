@@ -51,17 +51,18 @@ class FullScreenDialog extends React.Component {
 
   handleRenameCategory  ()  {
     //console.log("renaem"+"----------"+this.state.renaemMode);
-    if (this.state.renaemMode) {
+    const {state} = this;
+    if (state.renaemMode) {
       //console.log('start renameing');
       document.getElementById("rename").innerHTML = 'Start Renaming';
-      if (this.state.deleteMode) document.getElementById("deletion").innerHTML = 'Start Deleting';
+      if (state.deleteMode) document.getElementById("deletion").innerHTML = 'Start Deleting';
       this.setState({
         deleteMode: false,
         renaemMode: false,
       })
     } else {
       document.getElementById("rename").innerHTML = 'Stop Renaming';
-      if (this.state.deleteMode) document.getElementById("deletion").innerHTML = 'Start Deleting';
+      if (state.deleteMode) document.getElementById("deletion").innerHTML = 'Start Deleting';
       this.setState({
         deleteMode: false,
         renaemMode: true,
@@ -70,16 +71,17 @@ class FullScreenDialog extends React.Component {
   }
 
   handleDeleteCategory  ()  {
-    if (this.state.deleteMode) {
+    const {state} = this;
+    if (state.deleteMode) {
       document.getElementById("deletion").innerHTML = 'Start Deleting';
-      if (this.state.renaemMode) document.getElementById("rename").innerHTML = 'Start Renaming';
+      if (state.renaemMode) document.getElementById("rename").innerHTML = 'Start Renaming';
       this.setState({
         deleteMode: false,
         renaemMode: false,
       })
     } else {
       document.getElementById("deletion").innerHTML = 'Stop Deletion';
-      if (this.state.renaemMode) document.getElementById("rename").innerHTML = 'Start Renaming';
+      if (state.renaemMode) document.getElementById("rename").innerHTML = 'Start Renaming';
       this.setState({
         deleteMode: true,
         renaemMode: false,
@@ -89,8 +91,9 @@ class FullScreenDialog extends React.Component {
   }
   handlerAddMovieToCategory  (moviename, LinkId)  {
     //console.log(moviename + "--------------" + LinkId);
-    if (!this.state.deleteMode && !this.state.renaemMode) document.getElementById(LinkId).click();
-    else if(this.state.deleteMode){
+    const {state} = this;
+    if (!state.deleteMode && !state.renaemMode) document.getElementById(LinkId).click();
+    else if(state.deleteMode){
     //  console.log(localStorage.key(LinkId));
       localStorage.removeItem(localStorage.key(LinkId));
       this.setState({
@@ -114,7 +117,9 @@ class FullScreenDialog extends React.Component {
   render() {
     var list = [];
    // console.log(keyvalue);
-    const { moviename } = this.props.location.state;
+   const{state} = this;
+    const { location } = this.props;
+    const {moviename} = location.state;
     localStorage.removeItem("loglevel:webpack-dev-server");
     for (var i = 0; i < localStorage.length; i+=1) {
       let k = i;
@@ -127,7 +132,7 @@ class FullScreenDialog extends React.Component {
           <Divider />
           <Link id={k}
             to={{
-              pathname: "/AddtoCatagory/ExistingCategory",
+              pathname: "/add-to-catagory/existing-category",
               state: {
                 moviename: moviename,
                 Id: k,
@@ -142,9 +147,9 @@ class FullScreenDialog extends React.Component {
       <div>
         <Link id="renamecat"
                 to={{
-                  pathname: "/AddtoCatagory/NewCategory",
+                  pathname: "/add-to-catagory/new-category",
                   state: {
-                    moviename: this.state.newName,
+                    moviename: state.newName,
                   }
                 }}
               >  </Link>
@@ -152,7 +157,7 @@ class FullScreenDialog extends React.Component {
               <Link id="back_home" to="/"> </Link>
         <Dialog
           fullScreen
-          open={this.state.open}
+          open={state.open}
           onClose={this.handleClose}
           TransitionComponent={Transition}
         >
@@ -162,10 +167,8 @@ class FullScreenDialog extends React.Component {
                 <CloseIcon />
               </IconButton>
               <Typography variant="title" color="inherit" id="typo">
-                Sound
+                Categories
               </Typography>
-
-
             </Toolbar>
 
           </AppBar>

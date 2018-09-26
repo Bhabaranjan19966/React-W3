@@ -35,12 +35,11 @@ class Item extends React.Component {
         });
     }
     fetchData() {
-        previous = this.props.value;
-        if (this.props.value) {
-            var line = 1;
+        const {value}=this.props;
+        previous = value;
+        if (value) {
             var that = this;
-            while (line < 3) {
-                fetch(`https://api.themoviedb.org/3/search/movie?api_key=3693fada7703a9016579565320426cde&language=en-US&query=${this.props.value}&page=1llo&include_adult=false`)
+                fetch(`https://api.themoviedb.org/3/search/movie?api_key=3693fada7703a9016579565320426cde&language=en-US&query=${value}&page=1llo&include_adult=false`)
                     .then(
                         function (response) {
                             return response.json();
@@ -50,9 +49,10 @@ class Item extends React.Component {
 
                             for (var i = 0; i < jsonData.results.length; i += 1) {
                                 k = jsonData.results.map((data, index) => {
+                                    let unique = index;
                                     if (data.name) {
                                         return (
-                                            <Card className="Card" key={index}>
+                                            <Card className="Card" key={unique}>
                                                 <CardActionArea>
                                                     <CardMedia
                                                         component="img"
@@ -73,7 +73,7 @@ class Item extends React.Component {
                                                 <CardActions>
                                                     <Button size="small" color="primary">
                                                         <Link to={{
-                                                            pathname: "/MovieInfo",
+                                                            pathname: "/movie-info",
                                                             state: {
                                                                 moviename: data.name,
                                                                 popularity: data.popularity,
@@ -87,7 +87,7 @@ class Item extends React.Component {
                                                     <Button size="small" color="primary" onClick={() => that.print([data.name, data.popularity, data.overview])}>
                                                         <Link
                                                             to={{
-                                                                pathname: "/AddtoCatagory",
+                                                                pathname: "/add-to-catagory",
                                                                 state: {
                                                                     moviename: data.name,
                                                                     popularity: data.popularity,
@@ -103,7 +103,7 @@ class Item extends React.Component {
                                         );
                                     } else {
                                         return (
-                                            <Card className="Card" key={index}>
+                                            <Card className="Card" key={unique}>
                                                 <CardActionArea>
                                                     <CardMedia
                                                         component="img"
@@ -126,13 +126,13 @@ class Item extends React.Component {
                                                         size="small"
                                                         color="primary"
                                                         onClick={() => that.print([data.title, data.popularity, data.overview])}>
-                                                        <Link to={{
-                                                            pathname: "/MovieInfo",
+                                                       <Link to={{
+                                                            pathname: "/movie-info",
                                                             state: {
                                                                 moviename: data.title,
                                                                 popularity: data.popularity,
                                                                 overview: data.overview,
-                                                                source:`https://image.tmdb.org/t/p/original/${data.poster_path}`
+                                                                source:`https://image.tmdb.org/t/p/original/${data.poster_path}`,
                                                             }
                                                         }}>
                                                            Details
@@ -141,7 +141,7 @@ class Item extends React.Component {
                                                     <Button size="small" color="primary" >
                                                         <Link
                                                             to={{
-                                                                pathname: "/AddtoCatagory",
+                                                                pathname: "/add-to-catagory",
                                                                 state: {
                                                                     moviename: data.title,
                                                                     popularity: data.popularity,
@@ -159,14 +159,12 @@ class Item extends React.Component {
                             that.setState({
                             });
 
-                        });
-                line += 1;
-            }
+                        });            
         }
     }
     render() {
-
-        if (previous !== this.props.value) this.fetchData();
+        const {value} = this.props;
+        if (previous !== value) this.fetchData();
         if (!k) {
             return <section></section>;
         }

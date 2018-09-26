@@ -11,46 +11,47 @@ import '../../Stylesheet/main.scss'
 // import Fetch from '../Dropdownitems/Dropdownitems.js'
 // import CommunicationCallMissedOutgoing from 'material-ui/SvgIcon';
 var v;
-class Ip extends React.Component {
-    constructor(props){
+class Input extends React.Component {
+    static wipeValue() {
+        document.getElementById('results').style.display = 'none';
+    }
+    constructor(props) {
         super(props)
         this.state = {
-           // value: 0,
+            // value: 0,
         }
-        this.nameChangeHandler=this.nameChangeHandler.bind(this);
-        this.wipeValue=this.wipeValue.bind(this);
+        this.nameChangeHandler = this.nameChangeHandler.bind(this);
+        //this.wipeValue = this.wipeValue.bind(this);
     }
-    nameChangeHandler  ()  {
+    nameChangeHandler() {
         v = document.getElementById('filed').value;
+        const { reRender } = this.props;
         window.queryString = v;
-        
+
         if (v) {
             window.modalDisplay = true;
             this.setState(
                 {
-                   // value: 1,
+                    // value: 1,
                 }
             );
         }
         document.getElementById('results').style.display = 'block';
-        this.props.reRender();
-    }
-    wipeValue  () {
-        document.getElementById('results').style.display = 'none';
+        reRender();
     }
 
     // fetchData = () => {
     //     if(window.queryString){
-    
+
     //         return <Fetch value={window.queryString}/>;
     //     }
     // }
 
     render() {
-        
+
         return (
             <div>
-                <TextField id="filed" onClick={this.wipeValue}>
+                <TextField id="filed" onClick={Input.wipeValue}>
 
                 </TextField>
                 <Button variant="contained" color="primary" onClick={this.nameChangeHandler} >
@@ -65,4 +66,4 @@ class Ip extends React.Component {
     }
 }
 
-export default Ip; 
+export default Input; 

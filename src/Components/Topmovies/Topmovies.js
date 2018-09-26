@@ -59,7 +59,7 @@ class Topmovies extends React.Component {
                                     <CardActions>
                                         <Button size="small" color="primary">
                                         <Link to={{
-                                                            pathname: "/MovieInfo",
+                                                            pathname: "/movie-info",
                                                             state: {
                                                                 moviename: data.title,
                                                                 popularity: data.popularity,
@@ -73,7 +73,7 @@ class Topmovies extends React.Component {
                                         <Button size="small" color="primary">
                                             <Link
                                                 to={{
-                                                    pathname: "/AddtoCatagory",
+                                                    pathname: "/add-to-catagory",
                                                     state: {
                                                         moviename: data.title,
                                                         popularity: data.popularity,

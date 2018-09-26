@@ -14,28 +14,28 @@ function modal(props) {
     //     console.log(this.props);
 
     // }
-
-    const { moviename } = props.location.state;
-    const { popularity } = props.location.state;
-    const { overview } = props.location.state;
-    const {source} = props.location.state;
-    return (
-        <div className="full_screen">
-        <div className="modal_container">
-            <div> <img src={source} alt="movie_poster"/> </div>
-        <div className="info_modal" id="the popup modal">
-            <h2> {moviename}</h2>
-            <hr />
-            <h3>{popularity}  </h3>
-            <hr />
-            <p> {overview} </p>
-            <Link to="/">click here</Link>
-        </div>
-        </div>
-        </div>
-
-    );
-
+    const { location } = props;
+    if (location) {
+        const { moviename, popularity, overview, source } = location.state;
+        return (
+            <div className="full_screen">
+            <div className="modal_container">
+                <div> <img src={source} alt="movie_poster"/> </div>
+            <div className="info_modal" id="the popup modal">
+                <h2> {moviename}</h2>
+                <hr />
+                <h3>{popularity}  </h3>
+                <hr />
+                <p> {overview} </p>
+                <Link to="/">click here</Link>
+            </div>
+            </div>
+            </div>
+    
+        );
+    }
+    
+    return null;
 
 }
 

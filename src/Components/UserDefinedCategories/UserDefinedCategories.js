@@ -42,7 +42,8 @@ class UserDefinedCategory extends React.Component{
     }
     rendrModalView  (k) {
         let moviecategory = localStorage.key(k);
-        this.props.triggerRender(moviecategory);
+        var {triggerRender} = this.props;
+        triggerRender(moviecategory);
     }
     render(){
         this.handlerRenderCategories();

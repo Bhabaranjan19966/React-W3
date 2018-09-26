@@ -17,30 +17,24 @@ function Transition(props) {
 
 
 class AlertDialogSlide extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      open: true,
-    };
-    this.handleClose=this.handleClose.bind(this);
-  }
-
-  handleClose  ()  {
+  static handleClose  ()  {
       
     setTimeout(()=>{
         document.getElementById('Rdirect_Home').click();
     },2500)
   };
 
+
   render() {
+
     return (
       <div>
           <Link to="/" id="Rdirect_Home">  </Link>
         <Dialog
-          open={this.state.open}
+          open={true}
           TransitionComponent={Transition}
           keepMounted
-          onClose={this.handleClose}
+          onClose={AlertDialogSlide.handleClose}
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
@@ -56,7 +50,8 @@ class AlertDialogSlide extends React.Component {
           </DialogContent>
           <InProgress left={30}/>
           <DialogActions>
-            <Button onClick={this.handleClose()} color="primary">             
+            <Button onClick={AlertDialogSlide.handleClose()} color="primary">   
+            Redirecting home...          
             </Button>
             
           </DialogActions>

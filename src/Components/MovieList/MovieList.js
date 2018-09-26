@@ -15,66 +15,71 @@ import ListItemText from '@material-ui/core/ListItemText';
 var movieListinCategory = [];
 var movieList;
 class AlertDialog extends React.Component {
-  
-  constructor(props){
+
+  constructor(props) {
     super(props)
     this.state = {
       //open: this.props.status,
     };
-    this.handleClickOpen=this.handleClickOpen.bind(this);
-    this.handleClose=this.handleClose.bind(this);
-    this.renderMovielist=this.renderMovielist.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.renderMovielist = this.renderMovielist.bind(this);
   }
-  handleClickOpen  () {
-    this.setState({ });
+  handleClickOpen() {
+    this.setState({});
   };
 
-  handleClose  () {
-    this.props.triggerRender();
-    this.setState({  });
+  handleClose() {
+    const { triggerRender } = this.props;
+    triggerRender();
+    this.setState({});
   };
-   
-  renderMovielist  () {
+
+  renderMovielist() {
     movieListinCategory = [];
     //console.log('called'); 
-     movieList=localStorage.getItem(this.props.movieCategoryName);
-      if(movieList!= null){
-          movieList = movieList.split(',,,');
-      for(var i = 0 ; i<movieList.length ; i+=1 ){
-          movieListinCategory.push(
-            <ListItem button divider>
+    const { movieCategoryName } = this.props;
+    movieList = localStorage.getItem(movieCategoryName);
+    if (movieList != null) {
+      movieList = movieList.split(',,,');
+      for (var i = 0; i < movieList.length; i += 1) {
+          let index = i;
+        movieListinCategory.push(
+          <ListItem button divider key={index}>
             <ListItemText primary={movieList[i]} />
           </ListItem>
-          );
+        );
       }
     }
-      //this.setState();
+    //this.setState();
   }
 
   render() {
-//      console.log(this.props.status+"---------listmovies"+this.props.movieCategoryName);
-       if(this.props.movieCategoryName !== " ") this.renderMovielist();
-       let k = this.props.status; 
-       if(movieList==null){
-            k=false;
-        }
-      return (
-        
+    //      console.log(this.props.status+"---------listmovies"+this.props.movieCategoryName);
+    const { movieCategoryName } = this.props;
+    const {status} = this.props;
+    if (movieCategoryName !== " ") this.renderMovielist();
+    let k = status;
+    if (movieList == null) {
+      k = false;
+    }
+    return (
+
       <div>
-        
+
         <Dialog
           open={k}
           onClose={this.handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{this.props.movieCategoryName}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{movieCategoryName}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-            
+
             </DialogContentText>
             <List>
-                {movieListinCategory.map(moviename => moviename)}
+              {movieListinCategory.map(moviename => moviename)}
             </List>
           </DialogContent>
           <DialogActions>
